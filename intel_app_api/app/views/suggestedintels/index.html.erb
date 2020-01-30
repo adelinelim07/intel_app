@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Suggestedintels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Source</th>
+      <th>Tags</th>
+      <th>User</th>
+      <th>Type</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @suggestedintels.each do |suggestedintel| %>
+      <tr>
+        <td><%= suggestedintel.title %></td>
+        <td><%= suggestedintel.content %></td>
+        <td><%= suggestedintel.source %></td>
+        <td><%= suggestedintel.tags %></td>
+        <td><%= suggestedintel.user_id %></td>
+        <td><%= suggestedintel.type %></td>
+        <td><%= suggestedintel.date %></td>
+        <td><%= link_to 'Show', suggestedintel %></td>
+        <td><%= link_to 'Edit', edit_suggestedintel_path(suggestedintel) %></td>
+        <td><%= link_to 'Destroy', suggestedintel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Suggestedintel', new_suggestedintel_path %>

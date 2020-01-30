@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_30_022502) do
+ActiveRecord::Schema.define(version: 2020_01_30_084830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "position"
+    t.string "company"
+    t.string "email"
+    t.integer "number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "intels", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.string "source"
+    t.string "tags"
+    t.bigint "contact_id", null: false
+    t.bigint "user_id", null: false
+    t.string "type"
+    t.string "remarks"
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["contact_id"], name: "index_intels_on_contact_id"
+    t.index ["user_id"], name: "index_intels_on_user_id"
+  end
+
+  create_table "suggestedintels", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.string "source"
+    t.string "tags"
+    t.bigint "user_id", null: false
+    t.string "type"
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_suggestedintels_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -23,4 +62,7 @@ ActiveRecord::Schema.define(version: 2020_01_30_022502) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "intels", "contacts"
+  add_foreign_key "intels", "users"
+  add_foreign_key "suggestedintels", "users"
 end

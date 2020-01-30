@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Intels</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Source</th>
+      <th>Tags</th>
+      <th>Contact</th>
+      <th>User</th>
+      <th>Type</th>
+      <th>Remarks</th>
+      <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @intels.each do |intel| %>
+      <tr>
+        <td><%= intel.title %></td>
+        <td><%= intel.content %></td>
+        <td><%= intel.source %></td>
+        <td><%= intel.tags %></td>
+        <td><%= intel.contact_id %></td>
+        <td><%= intel.user_id %></td>
+        <td><%= intel.type %></td>
+        <td><%= intel.remarks %></td>
+        <td><%= intel.date %></td>
+        <td><%= link_to 'Show', intel %></td>
+        <td><%= link_to 'Edit', edit_intel_path(intel) %></td>
+        <td><%= link_to 'Destroy', intel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Intel', new_intel_path %>

@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @intel.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @intel.content %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @intel.source %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @intel.tags %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @intel.contact_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @intel.user_id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @intel.type %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @intel.remarks %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @intel.date %>
+</p>
+
+<%= link_to 'Edit', edit_intel_path(@intel) %> |
+<%= link_to 'Back', intels_path %>

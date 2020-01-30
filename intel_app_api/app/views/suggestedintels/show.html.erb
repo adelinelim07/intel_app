@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @suggestedintel.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @suggestedintel.content %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @suggestedintel.source %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @suggestedintel.tags %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @suggestedintel.user_id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @suggestedintel.type %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @suggestedintel.date %>
+</p>
+
+<%= link_to 'Edit', edit_suggestedintel_path(@suggestedintel) %> |
+<%= link_to 'Back', suggestedintels_path %>
