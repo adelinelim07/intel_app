@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+
+:root {
+  --white: #ffffff;
+  --black: #0b0c10;
+  --darkorange: #E27D60;
+  --lightorange: #E8A87C;
+  --dullpink: #C38D9E;
+  --darkteal: #41B3A3;
+  --lightteal: #85DCBA;
+
+}
+
+html { 
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+  url("https://images.pexels.com/photos/723240/pexels-photo-723240.jpeg?cs=srgb&dl=photography-of-airplane-during-sunrise-723240.jpg&fm=jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+* {
+  font-family: "Fira Sans", sans-serif;
+}
+
+h1 {
+  color: darkblue;
+  text-align: center;
+}
+
+
+
+
 a {
     text-align: center;
     display: block;

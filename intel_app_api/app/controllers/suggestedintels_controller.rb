@@ -1,77 +1,77 @@
-class SuggestedintelsController < ApplicationController
-  before_action :set_suggestedintel, only: [:show, :edit, :update, :destroy]
+# class SuggestedintelsController < ApplicationController
+#   before_action :set_suggestedintel, only: [:show, :edit, :update, :destroy]
 
-  # GET /suggestedintels
-  # GET /suggestedintels.json
-  def index
-    render json: mergeNewsFeed
-  end
+#   # GET /suggestedintels
+#   # GET /suggestedintels.json
+#   def index
+#     render json: mergeNewsFeed
+#   end
 
-  # GET /suggestedintels/1
-  # GET /suggestedintels/1.json
-  def show
-  end
+#   # GET /suggestedintels/1
+#   # GET /suggestedintels/1.json
+#   def show
+#   end
 
-  # GET /suggestedintels/new
-  #def new
-  #  @suggestedintel = Suggestedintel.new
-  #end
+#   # GET /suggestedintels/new
+#   #def new
+#   #  @suggestedintel = Suggestedintel.new
+#   #end
 
-  # GET /suggestedintels/1/edit
-  #def edit
-  #end
+#   # GET /suggestedintels/1/edit
+#   #def edit
+#   #end
 
-  # POST /suggestedintels
-  # POST /suggestedintels.json
-  # def create
-  #   @suggestedintel = Suggestedintel.new(suggestedintel_params)
+#   # POST /suggestedintels
+#   # POST /suggestedintels.json
+#   # def create
+#   #   @suggestedintel = Suggestedintel.new(suggestedintel_params)
 
-  #   respond_to do |format|
-  #     if @suggestedintel.save
-  #       format.html { redirect_to @suggestedintel, notice: 'Suggestedintel was successfully created.' }
-  #       format.json { render :show, status: :created, location: @suggestedintel }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @suggestedintel.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+#   #   respond_to do |format|
+#   #     if @suggestedintel.save
+#   #       format.html { redirect_to @suggestedintel, notice: 'Suggestedintel was successfully created.' }
+#   #       format.json { render :show, status: :created, location: @suggestedintel }
+#   #     else
+#   #       format.html { render :new }
+#   #       format.json { render json: @suggestedintel.errors, status: :unprocessable_entity }
+#   #     end
+#   #   end
+#   # end
 
-  # PATCH/PUT /suggestedintels/1
-  # PATCH/PUT /suggestedintels/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @suggestedintel.update(suggestedintel_params)
-  #       format.html { redirect_to @suggestedintel, notice: 'Suggestedintel was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @suggestedintel }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @suggestedintel.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+#   # PATCH/PUT /suggestedintels/1
+#   # PATCH/PUT /suggestedintels/1.json
+#   # def update
+#   #   respond_to do |format|
+#   #     if @suggestedintel.update(suggestedintel_params)
+#   #       format.html { redirect_to @suggestedintel, notice: 'Suggestedintel was successfully updated.' }
+#   #       format.json { render :show, status: :ok, location: @suggestedintel }
+#   #     else
+#   #       format.html { render :edit }
+#   #       format.json { render json: @suggestedintel.errors, status: :unprocessable_entity }
+#   #     end
+#   #   end
+#   # end
 
-  # DELETE /suggestedintels/1
-  # DELETE /suggestedintels/1.json
-  # def destroy
-  #   @suggestedintel.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to suggestedintels_url, notice: 'Suggestedintel was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+#   # DELETE /suggestedintels/1
+#   # DELETE /suggestedintels/1.json
+#   # def destroy
+#   #   @suggestedintel.destroy
+#   #   respond_to do |format|
+#   #     format.html { redirect_to suggestedintels_url, notice: 'Suggestedintel was successfully destroyed.' }
+#   #     format.json { head :no_content }
+#   #   end
+#   # end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_suggestedintel
-      @suggestedintel = Suggestedintel.find(params[:id])
-    end
+#   private
+#     # Use callbacks to share common setup or constraints between actions.
+#     def set_suggestedintel
+#       @suggestedintel = Suggestedintel.find(params[:id])
+#     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def suggestedintel_params
-      params.require(:suggestedintel).permit(:title, :content, :source, :tags, :user_id, :type, :date)
-    end
-end
+#     # Never trust parameters from the scary internet, only allow the white list through.
+#     def suggestedintel_params
+#       params.require(:suggestedintel).permit(:title, :content, :source, :tags, :user_id, :type, :date)
+#     end
+# end
 
 ########################################################################
 #gems used
@@ -96,19 +96,33 @@ elements = page.css("li").each_with_index {|line, index|
   date = paragraph.slice(0,10)
   description = paragraph[20..]
   link = line.css("h3>a>@href").text
-  #puts title
-  #puts link
+  img = ""
+
+  line.css(" img").each do |img_node|
+    img_attributes = img_node.attributes.values
+    img_attributes.each do |attr|
+      #p [attr.name, attr.value]
+      if attr.name == "data-src"
+        img = attr.value
+        p img
+      end
+    end
+  end
+  
   if title.length > 2
     fg_output.push( {
       :index => index,
       :title => title,
       :description => description,
+      :img => img,
       :link => link,
       :source => source
       })
+      puts fg_output
   end
 }
 fg_output
+
 end
 
 ########################################################################
@@ -124,13 +138,20 @@ open(url) do |rss|
   feed.items.each_with_index {|item, index|
     title = item.title
     description = item.description.gsub(/<\/?[^>]*>/, "")
+    contentEncoded = item.content_encoded
+    img = contentEncoded.split("src=")[1]
+    img = img.split("alt")[0]
     category = item.category
-    link = item.link    
+    link = item.link   
     
+    #puts img
+    #puts ("***********************")
+
     aviator_output.push( {
       :index => index,
       :title => title,
       :description => description,
+      :img => img,
       :link => link,
       :source => source
     })
@@ -151,4 +172,4 @@ newsFeed
 end
 
 
-
+flightglobal

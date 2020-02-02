@@ -26,8 +26,10 @@ class SuggestedIntels extends Component {
         {this.state.suggestedintels.map(intel=>{
           return(
           <div>
-          <p>{intel.title}</p>
+          <h3>{intel.title}</h3>
           <p>{intel.description}</p>
+          <a href= {intel.link}>link</a>
+          <img src= {intel.img} alt="hello"></img>
           </div>
           )
         })}

@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet');
-@import url("https://fonts.googleapis.com/css?family=Oswald&display=swap");
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+
 
 /* https://coolors.co/041725-1b374b-3d232c-c39c93-d6c9ba */
 /* https://coolors.co/ffffff-74b0bc-ccc5b9-d5cedd-326273 */
@@ -8,10 +7,12 @@
 :root {
   --white: #ffffff;
   --black: #0b0c10;
-  --grey: #1f2833;
-  --lightgrey: #c5c6c7;
-  --brightteal: #66fcf1;
-  --teal: #45a29e;
+  --darkorange: #E27D60;
+  --lightorange: #E8A87C;
+  --dullpink: #C38D9E;
+  --darkteal: #41B3A3;
+  --lightteal: #85DCBA;
+
 }
 
 html { 
@@ -24,7 +25,7 @@ html {
 }
 
 * {
-  font-family: "Lato", sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
 h1 {

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 
-class Greeting extends React.Component {
-  state = {
-    hour: null,
-    username: this.props.user
-  };
+class Greeting extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hour: null,
+      username: "Adeline"
+    };
+  }
 
   componentDidMount() {
     this.getHour();
@@ -20,7 +23,6 @@ class Greeting extends React.Component {
 
   render() {
     const { hour, username } = this.state;
-    console.log(username)
 
     return (
       <div>
