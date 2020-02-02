@@ -18,7 +18,7 @@ class Intels extends Component {
   }
 
   render() {
-    return <h1>Intels</h1>;
+    return <h2>Intels</h2>;
   }
 }
 

@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Unica+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poiret+One|Pompiere&display=swap');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 
 /* https://coolors.co/041725-1b374b-3d232c-c39c93-d6c9ba */
@@ -7,29 +12,64 @@
 :root {
   --white: #ffffff;
   --black: #0b0c10;
-  --darkorange: #E27D60;
-  --lightorange: #E8A87C;
+  --navy: #104664;
+  --darkorange: #FC4A1A;
+  --sunshineorange: #F78733;
   --dullpink: #C38D9E;
   --darkteal: #41B3A3;
   --lightteal: #85DCBA;
-
 }
 
 html { 
-  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
-  url("https://images.pexels.com/photos/723240/pexels-photo-723240.jpeg?cs=srgb&dl=photography-of-airplane-during-sunrise-723240.jpg&fm=jpg") no-repeat center center fixed; 
+  background: url("./home-bg-wide.jpeg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
+
 * {
-  font-family: "Fira Sans", sans-serif;
+  font-family: "Fira Sans", sans-serif; 
 }
 
 h1 {
-  color: darkblue;
-  text-align: center;
+  color: var(--white);
+  font-size: 70px;
+  margin-top: 100px;
+  margin-left: 40px;
+  text-align: left;
+  width: 1000px;
+  font-family: 'Lato', sans-serif;
 }
+
+p {
+  color: var(--white);
+  margin-left: 45px;
+  width: 250px;
+}
+
+#buttons {
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+a {
+  background-color: var(--sunshineorange);
+  color: var(--white);
+  border: none;
+  border-radius: 20px;
+  width: 80px;
+  margin-right: 20px;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover {
+  background-color: var(--lightteal)
+}
+
+
 

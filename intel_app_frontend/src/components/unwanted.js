@@ -30,9 +30,9 @@ class Home extends Component {
           <link rel="stylesheet" type="text/css" href="../../css/Home.css" />
         </head>
         <br></br>
-        <body>
         {this.props.loggedInStatus ? (
           <div>
+            <Greeting username={this.props.user} />
             <Link to="/logout" onClick={this.handleClick}>
               Log Out
             </Link>
@@ -41,10 +41,10 @@ class Home extends Component {
           </div>
         ) : (
           <div>
-            <Greeting/>
+            <Link to="/login">Log In</Link>
+            <Link to="/signup">Sign Up</Link>
           </div>
         )}
-        </body>
       </div>
     );
   }
