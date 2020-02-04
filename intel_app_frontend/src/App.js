@@ -4,6 +4,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/registrations/Login";
 import Signup from "./components/registrations/Signup";
+import Dashboard from "./components/Dashboard";
+// import DailyNews from "./components/DailyNews";
+// import Intels from "./components/Intels";
 
 
 
@@ -86,7 +89,18 @@ class App extends Component {
                 />
               )}
             />
-           
+            <Route
+              exact
+              path="/dashboard"
+              render={props => (
+                <Dashboard
+                  {...props}
+                  handleLogout={this.handleLogout}
+                  loggedInStatus={this.state.isLoggedIn}
+                  user={this.state.user}
+                />
+              )}
+            />
           </Switch>
         </BrowserRouter>
       </div>

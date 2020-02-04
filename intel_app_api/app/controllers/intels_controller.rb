@@ -5,6 +5,7 @@ class IntelsController < ApplicationController
   # GET /intels.json
   def index
     @intels = Intel.all
+    render json: @intels
   end
 
   # GET /intels/1
@@ -26,16 +27,13 @@ class IntelsController < ApplicationController
   def create
     @intel = Intel.new(intel_params)
 
-    respond_to do |format|
-      if @intel.save
-        format.html { redirect_to @intel, notice: 'Intel was successfully created.' }
-        format.json { render :show, status: :created, location: @intel }
-      else
-        format.html { render :new }
-        format.json { render json: @intel.errors, status: :unprocessable_entity }
-      end
+    if @intel.save
+      render json: @intel, status: :created, location: @intel
+    else
+      render json: @intel.errors, status: :unprocessable_entity
     end
   end
+
 
   # PATCH/PUT /intels/1
   # PATCH/PUT /intels/1.json
@@ -69,6 +67,7 @@ class IntelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def intel_params
+      #params.require(:intel).permit(:title)
       params.require(:intel).permit(:title, :content, :source, :tags, :contact_id, :user_id, :type, :remarks, :date)
     end
 end

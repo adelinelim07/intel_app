@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   get '/meta', to: 'meta#about'
 
+  get '/keywords', to: 'suggestedintels#keywords'
+
 end

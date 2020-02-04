@@ -1,10 +1,12 @@
 import React, { Component } from "react";
+import PopupForm from "./IntelsForm.js";
 
 class Intels extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      intels: []
+      intels: [],
+      user: this.props.user
     };
   }
   componentDidMount() {
@@ -17,8 +19,29 @@ class Intels extends Component {
       .catch(error => console.error(error));
   }
 
+  togglePopupForm = () => {
+    this.setState({
+      showPopupForm: !this.state.showPopupForm
+    });
+  };
+
   render() {
-    return <h2>Intels</h2>;
+    return (
+      <div>
+        <h2>Intels</h2>
+        <button class="addIntel" onClick={() => this.togglePopupForm()}>
+          Contribute
+        </button>
+        {this.state.showPopupForm ? (
+          <PopupForm
+            user={this.props.user}
+            closePopup={() => {
+              this.togglePopupForm();
+            }}
+          />
+        ) : null}
+      </div>
+    );
   }
 }
 

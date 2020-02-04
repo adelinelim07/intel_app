@@ -16,12 +16,14 @@ class Login extends Component {
   componentWillMount() {
     return this.props.loggedInStatus ? this.redirect() : null;
   }
+
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
   };
+
   handleSubmit = event => {
     event.preventDefault();
     const { username, email, password } = this.state;
@@ -59,6 +61,7 @@ class Login extends Component {
       </div>
     );
   };
+  
   render() {
     const { username, email, password } = this.state;
     return (
