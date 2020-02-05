@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Unica+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Poiret+One|Pompiere&display=swap');
@@ -5,6 +6,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
+/* icon ref: https://mfglabs.github.io/mfglabs-iconset/ */
 
 /* https://coolors.co/041725-1b374b-3d232c-c39c93-d6c9ba */
 /* https://coolors.co/ffffff-74b0bc-ccc5b9-d5cedd-326273 */
@@ -23,6 +25,10 @@
 * {
     padding:0;
     margin:0;
+}
+
+.material-icons {
+    margin-top: -5px;
 }
 
 .bg_img {
@@ -187,4 +193,3 @@ body {
 }
 
 
-Resources1×0.5×0.25×Rerun

@@ -67,6 +67,8 @@ class Login extends Component {
       <div>
         <head>
           <link rel="stylesheet" type="text/css" href="../../css/Forms.css" />
+          {/* <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"/> */}
         </head>
         <div class="bg_img"></div>
         <div class="form_wrapper">
@@ -99,7 +101,7 @@ class Login extends Component {
                   <div class="input_field">
                     {" "}
                     <span>
-                      <div class="icon icon-letter"></div>
+                      <i class="material-icons">email</i>
                     </span>
                     <input
                       placeholder="email"
@@ -115,7 +117,7 @@ class Login extends Component {
                   <div class="input_field">
                     {" "}
                     <span>
-                      <i aria-hidden="true" class="fa fa-phone"></i>
+                      <i class="material-icons">lock</i>
                     </span>
                     <input
                       placeholder="password"

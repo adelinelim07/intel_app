@@ -60,42 +60,92 @@ class Signup extends Component {
     const { username, email, password, password_confirmation } = this.state;
     return (
       <div>
-        <h1>Sign Up</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="username"
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder="email"
-            type="text"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder="password"
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
-          <input
-            placeholder="password confirmation"
-            type="password"
-            name="password_confirmation"
-            value={password_confirmation}
-            onChange={this.handleChange}
-          />
+        <head>
+          <link rel="stylesheet" type="text/css" href="../../css/Forms.css" />
+          {/* <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"/> */}
+        </head>
+        <div class="bg_img"></div>
+        <div class="form_wrapper">
+          <div class="form_container">
+            <div class="title_container">
+              <h2>Sign Up</h2>
+            </div>
+            <form onSubmit={this.handleSubmit}>
+              <div class="row clearfix">
+                <div class="col_half">
+                  <label>Username</label>
+                  <div class="input_field">
+                    {" "}
+                    <span>
+                    <i class="material-icons">person</i>
+                    </span>
+                    <input
+                      placeholder="username"
+                      type="text"
+                      name="username"
+                      value={username}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                </div>
 
-          <button placeholder="submit" type="submit">
-            Sign Up
-          </button>
-        </form>
-        <div>{this.state.errors ? this.handleErrors() : null}</div>
+                <div class="col_half">
+                  <label>Email</label>
+                  <div class="input_field">
+                    {" "}
+                    <span>
+                      <i class="material-icons">email</i>
+                    </span>
+                    <input
+                      placeholder="email"
+                      type="text"
+                      name="email"
+                      value={email}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row clearfix">
+                <div class="col_half">
+                  <label>Password</label>
+                  <div class="input_field">
+                    {" "}
+                    <span>
+                      <i class="material-icons">lock</i>
+                    </span>
+                    <input
+                      placeholder="password"
+                      type="password"
+                      name="password"
+                      value={password}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                </div>
+                <div class="col_half">
+                  <label>Password</label>
+                  <div class="input_field">
+                    {" "}
+                    <span>
+                      <i class="material-icons">lock</i>
+                    </span>
+                    <input
+                      placeholder="password confirmation"
+                      type="password"
+                      name="password_confirmation"
+                      value={password_confirmation}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+              <input class="button" type="submit" value="Sign Up" />
+            </form>
+          </div>
+          <div>{this.state.errors ? this.handleErrors() : null}</div>
+        </div>
       </div>
     );
   }
