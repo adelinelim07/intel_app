@@ -21,7 +21,9 @@ class Dashboard extends Component {
         </head>
         <body>
           <div class="grid">
-          <SideBarMenu user={this.props.user} />
+          <SideBarMenu 
+          user={this.props.user} 
+          handleLogout={this.props.handleLogout}/>
           </div>
         </body>
       </div>

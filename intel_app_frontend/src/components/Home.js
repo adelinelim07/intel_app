@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import Dashboard from "./Dashboard.js";
+import axios from "axios";
 
 class Home extends Component {
   constructor(props) {
@@ -24,7 +24,7 @@ class Home extends Component {
     });
   };
 
-  handleClickLogout = () => {
+  handleLogout = () => {
     axios
       .delete("http://localhost:3001/logout", { withCredentials: true })
       .then(response => {
@@ -33,6 +33,7 @@ class Home extends Component {
       })
       .catch(error => console.log(error));
   };
+
 
   render() {
     console.log(this.props.user);
@@ -50,9 +51,11 @@ class Home extends Component {
         <body>
           {this.props.loggedInStatus ? (
             <div>
+              {/* <Link to="/logout" onClick={this.handleLogout}>
+                  Log Out
+              </Link> */}
               <Dashboard 
-              user={this.props.user}
-              handleClickLogout = {this.handleClickLogout}
+                user={this.props.user}
               />
             </div>
           ) : (

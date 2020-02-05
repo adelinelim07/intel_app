@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, withRouter } from "react-router-dom";
+import axios from "axios";
 import Intels from "./Intels.js";
 import DailyNews from "./DailyNews.js";
 
@@ -10,6 +11,16 @@ class SideBarMenu extends Component {
       user: this.props.user
     };
   }
+
+  handleLogout = () => {
+    axios
+      .delete("http://localhost:3001/logout", { withCredentials: true })
+      .then(response => {
+        this.props.handleLogout();
+        this.props.history.push("/");
+      })
+      .catch(error => console.log(error));
+  };
 
   render() {
     return (
@@ -25,9 +36,7 @@ class SideBarMenu extends Component {
         <aside class="sidenav">
           <div class="sidenav__brand">
             <i class="fas fa-feather-alt sidenav__brand-icon"></i>
-            <a class="sidenav__brand-link" href="#">
-              Ux<span class="text-light">Pro</span>
-            </a>
+              Share<span class="text-light">In</span>
             <i class="fas fa-times sidenav__brand-close"></i>
           </div>
           <div class="sidenav__profile">
@@ -67,7 +76,7 @@ class SideBarMenu extends Component {
                 Analysis<i class="far fa-image"></i>
               </li>
               <li class="navList__heading">
-                <Link to="/logout" onClick={this.handleClickLogout}>
+                <Link to="/logout" onClick={this.handleLogout}>
                   Log Out
                 </Link>
                 <i class="far fa-image"></i>
@@ -107,4 +116,4 @@ class SideBarMenu extends Component {
   }
 }
 
-export default SideBarMenu;
+export default withRouter(SideBarMenu);

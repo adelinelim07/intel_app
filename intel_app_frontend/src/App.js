@@ -57,18 +57,6 @@ class App extends Component {
           <Switch>
             <Route
               exact
-              path="/"
-              render={props => (
-                <Home
-                  {...props}
-                  handleLogout={this.handleLogout}
-                  loggedInStatus={this.state.isLoggedIn}
-                  user={this.state.user}
-                />
-              )}
-            />
-            <Route
-              exact
               path="/login"
               render={props => (
                 <Login
@@ -94,6 +82,18 @@ class App extends Component {
               path="/dashboard"
               render={props => (
                 <Dashboard
+                  {...props}
+                  handleLogout={this.handleLogout}
+                  loggedInStatus={this.state.isLoggedIn}
+                  user={this.state.user}
+                />
+              )}
+            />
+             <Route
+              exact
+              path="/"
+              render={props => (
+                <Home
                   {...props}
                   handleLogout={this.handleLogout}
                   loggedInStatus={this.state.isLoggedIn}

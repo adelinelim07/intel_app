@@ -153,10 +153,16 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 16px 16px 3px;
-  color: rgba(255, 255, 255, 0.5);
+  color: white;
   text-transform: uppercase;
   font-size: 15px;
 }
+
+.navList__heading > a {
+  text-decoration: none;
+  color: white;
+}
+
 .navList__subheading {
   position: relative;
   padding: 10px 30px;
@@ -182,7 +188,7 @@ button {
   text-decoration: none;
 }
 
-.navList__subheading:after {
+.navList__heading:after {
   position: absolute;
   content: "";
   height: 6px;
@@ -194,14 +200,14 @@ button {
   transform: rotate(225deg);
   transition: all 0.2s;
 }
-.navList__subheading:hover {
+.navList__heading:hover, .navList__subheading:hover {
   background-color: #303753;
   cursor: pointer;
 }
-.navList__subheading--open {
+.navList__heading--open {
   background-color: #303753;
 }
-.navList__subheading--open:after {
+.navList__heading--open:after {
   transform: rotate(315deg);
 }
 .navList .subList {
