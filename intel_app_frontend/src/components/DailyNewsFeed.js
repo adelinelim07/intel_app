@@ -55,7 +55,7 @@ class DailyNewsFeed extends Component {
           <link
             rel="stylesheet"
             type="text/css"
-            href="../../css/DailyNewsFeed.css"
+            href="../../css/Dashboard.css"
           />
         </head>
         <body>

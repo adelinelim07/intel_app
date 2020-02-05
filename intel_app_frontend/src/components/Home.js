@@ -24,7 +24,7 @@ class Home extends Component {
     });
   };
 
-  handleClick = () => {
+  handleClickLogout = () => {
     axios
       .delete("http://localhost:3001/logout", { withCredentials: true })
       .then(response => {
@@ -50,10 +50,9 @@ class Home extends Component {
         <body>
           {this.props.loggedInStatus ? (
             <div>
-              <Link to="/logout" onClick={this.handleClick}>
-                Log Out
-              </Link>
-              <Dashboard user={this.props.user}
+              <Dashboard 
+              user={this.props.user}
+              handleClickLogout = {this.handleClickLogout}
               />
             </div>
           ) : (

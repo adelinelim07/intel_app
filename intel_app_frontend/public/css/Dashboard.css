@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Unica+One&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Poiret+One|Pompiere&display=swap');
-@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Unica+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poiret+One|Pompiere&display=swap");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
 /* https://coolors.co/041725-1b374b-3d232c-c39c93-d6c9ba */
 /* https://coolors.co/ffffff-74b0bc-ccc5b9-d5cedd-326273 */
@@ -13,15 +12,15 @@
   --white: #ffffff;
   --black: #0b0c10;
   --navy: #104664;
-  --darkorange: #FC4A1A;
-  --sunshineorange: #F78733;
-  --dullpink: #C38D9E;
-  --darkteal: #41B3A3;
-  --lightteal: #85DCBA;
+  --darkorange: #fc4a1a;
+  --sunshineorange: #f78733;
+  --dullpink: #c38d9e;
+  --darkteal: #41b3a3;
+  --lightteal: #85dcba;
 }
 
-html { 
-  background: var(--navy);
+html {
+  background: var(--white);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -29,12 +28,13 @@ html {
   height: 500px;
 }
 
-
 * {
-  font-family: "Fira Sans", sans-serif; 
+  font-family: "Fira Sans", sans-serif;
 }
 
-html, body, .app {
+html,
+body,
+.app {
   margin: 0;
   padding: 0;
   position: relative;
@@ -44,5 +44,233 @@ html, body, .app {
 
 button {
   cursor: pointer;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 50px 1fr 50px;
+  grid-template-areas: "header" "main" "footer";
+  height: 100vh;
+  overflow-x: hidden;
+}
+.grid--noscroll {
+  overflow-y: hidden;
+}
+
+.sidenav {
+  position: fixed;
+  grid-area: sidenav;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #394263;
+  color: #FFF;
+  width: 240px;
+  transform: translateX(-245px);
+  transition: all 0.6s ease-in-out;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+.sidenav__brand {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.sidenav__brand-icon {
+  margin-top: 2px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.sidenav__brand-close {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  visibility: visible;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+.sidenav__brand-link {
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFF;
+  margin: 0 15px;
+  letter-spacing: 1.5px;
+}
+.sidenav__profile {
+  display: flex;
+  align-items: center;
+  min-height: 90px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.sidenav__profile-avatar {
+  background-image: url("https://react.semantic-ui.com/images/avatar/large/matthew.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  height: 64px;
+  width: 64px;
+  margin: 0 15px;
+}
+.sidenav__profile-title {
+  font-size: 17px;
+  letter-spacing: 1px;
+}
+.sidenav__arrow {
+  position: absolute;
+  content: "";
+  width: 6px;
+  height: 6px;
+  top: 50%;
+  right: 20px;
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%) rotate(225deg);
+}
+.sidenav__sublist {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0 0;
+}
+.sidenav--active {
+  transform: translateX(0);
+}
+
+.navList {
+  width: 240px;
+  padding: 0;
+  margin: 0;
+  background-color: #394263;
+  list-style-type: none;
+}
+.navList__heading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 3px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  font-size: 15px;
+}
+.navList__subheading {
+  position: relative;
+  padding: 10px 30px;
+  color: #fff;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+.navList__subheading-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  width: 12px;
+}
+.navList__subheading-title {
+  margin: 0 15px;
+  
+}
+
+.navList__subheading-title > a {
+  color: white;
+  text-decoration: none;
+}
+
+.navList__subheading:after {
+  position: absolute;
+  content: "";
+  height: 6px;
+  width: 6px;
+  top: 17px;
+  right: 25px;
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transform: rotate(225deg);
+  transition: all 0.2s;
+}
+.navList__subheading:hover {
+  background-color: #303753;
+  cursor: pointer;
+}
+.navList__subheading--open {
+  background-color: #303753;
+}
+.navList__subheading--open:after {
+  transform: rotate(315deg);
+}
+.navList .subList {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  background-color: #262c43;
+  visibility: visible;
+  overflow: hidden;
+  max-height: 200px;
+  transition: all 0.4s ease-in-out;
+}
+.navList .subList__item {
+  padding: 8px;
+  text-transform: capitalize;
+  padding: 8px 30px;
+  color: #D3D3D3;
+}
+.navList .subList__item:first-child {
+  padding-top: 15px;
+}
+.navList .subList__item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+.navList .subList--hidden {
+  visibility: hidden;
+  max-height: 0;
+}
+
+
+
+.dailynewsfeed {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.dailynewsadded {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.dailynewstop5 {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+
+@media only screen and (min-width: 46.875em) {
+  .grid {
+    display: grid;
+    grid-template-columns: 240px calc(100% - 240px);
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas: "sidenav header" "sidenav main" "sidenav footer";
+    height: 100vh;
+  }
+
+  .sidenav {
+    position: relative;
+    transform: translateX(0);
+  }
+  .sidenav__brand-close {
+    visibility: hidden;
+  }
 }
 

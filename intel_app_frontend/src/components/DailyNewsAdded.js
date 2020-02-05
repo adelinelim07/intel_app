@@ -34,7 +34,7 @@ class DailyNewsAdded extends Component {
           <link
             rel="stylesheet"
             type="text/css"
-            href="../../css/DailyNews.css"
+            href="../../css/Dashboard.css"
           />
         </head>
         <body>
