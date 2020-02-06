@@ -92,7 +92,7 @@ class DailyNewsFeed extends Component {
                       this.togglePopupShow();
                     }}
                   >
-                    SEE MORE
+                    <i class="material-icons">zoom_in</i>
                   </button>
 
                   {this.state.showPopupForm ? (

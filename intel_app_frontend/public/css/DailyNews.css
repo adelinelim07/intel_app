@@ -48,7 +48,6 @@ html {
     "newsfeed added"
     "newsfeed added";
     overflow: hidden;
-    grid-gap: 10px;
 }
 
 .header {
@@ -91,7 +90,7 @@ html {
 .added-content{
     grid-column: 1/2;
     grid-row: 2/4; 
-    max-height: 60vh;
+    max-height: 58vh;
     overflow: scroll;
 }
 

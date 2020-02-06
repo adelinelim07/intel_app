@@ -74,7 +74,7 @@ class SideBarMenu extends Component {
                     <i class="fas fa-eye"></i>
                   </span>
                   <span class="navList__subheading-title">
-                    <Link to="/intels"> Market Intels </Link>
+                    <Link to="/intels"> Market Chatter </Link>
                   </span>
                 </div>
               </li>
