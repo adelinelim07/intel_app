@@ -27,18 +27,22 @@ class DailyNewsTop5 extends Component {
           <link
             rel="stylesheet"
             type="text/css"
-            href="../../css/Dashboard.css"
+            href="../../css/DailyNews.css"
           />
         </head>
         <body>
-          <h2>Daily News Top 5</h2>
-          {this.state.keywords.map(keyword=>{
-            return(
-              <div>
-                <li>{keyword.keyword} {keyword.count}</li>
-              </div>
-            )
-          })}
+          <div class="top5-subheader">Today's Top Keywords</div>
+          <div class="top5-content">
+            {this.state.keywords.map(keyword => {
+              return (
+                <div>
+                  <li>
+                    {keyword.keyword} {keyword.count}
+                  </li>
+                </div>
+              );
+            })}
+          </div>
         </body>
       </div>
     );

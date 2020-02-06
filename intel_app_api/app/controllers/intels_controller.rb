@@ -4,7 +4,7 @@ class IntelsController < ApplicationController
   # GET /intels
   # GET /intels.json
   def index
-    @intels = Intel.all
+    @intels = Intel.all.reverse
     render json: @intels
   end
 

@@ -16,7 +16,7 @@ class DailyNewsFeed extends Component {
 
   componentDidMount() {
     this.getSuggestedIntels();
-    this.getIntels()
+    this.getIntels();
   }
 
   getIntels() {
@@ -25,7 +25,7 @@ class DailyNewsFeed extends Component {
       .then(json => this.setState({ intels: json }))
       .catch(error => console.error(error));
     console.log(this.state.intels);
-  };
+  }
 
   getSuggestedIntels() {
     fetch("http://localhost:3001/suggestedintels")
@@ -52,68 +52,72 @@ class DailyNewsFeed extends Component {
     return (
       <div>
         <head>
+          <link rel="stylesheet" type="text/css" href="../../css/Popup.css" />
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
           <link
             rel="stylesheet"
             type="text/css"
-            href="../../css/Popup.css"
+            href="../../css/DailyNews.css"
           />
         </head>
         <body>
-          <h2>Daily News Feed</h2>
-          {this.state.suggestedintels.map(intel => {
-            return (
-              <div class="news">
-                <img src={intel.img} alt="hello"></img>
-                <h4>{intel.title}</h4>
-                {/* <p>{intel.description}</p>
+          <div class="dailynewsfeed-subheader">Today's News Feed</div>
+          <div class="dailynewsfeed-content">
+            {this.state.suggestedintels.map(intel => {
+              return (
+                <div class="news">
+                  <img src={intel.img} alt="hello"></img>
+                  <h4>{intel.title}</h4>
+                  {/* <p>{intel.description}</p>
                 <a href={intel.link}>link</a> */}
 
-                <button
-                  class="addIntel"
-                  onClick={() => {
-                    this.setState({
-                      intelClicked: intel
-                    });
-                    this.togglePopupForm();
-                  }}
-                >
-                  +
-                </button>
-
-                <button
-                  class="show"
-                  onClick={() => {
-                    this.setState({
-                      intelClicked: intel
-                    });
-                    this.togglePopupShow();
-                  }}
-                >
-                  SEE MORE
-                </button>
-
-                {this.state.showPopupForm ? (
-                  <PopupForm
-                    intelClicked={this.state.intelClicked}
-                    user={this.props.user}
-                    closePopup={() => {
+                  <button
+                    class="addIntel"
+                    onClick={() => {
+                      this.setState({
+                        intelClicked: intel
+                      });
                       this.togglePopupForm();
                     }}
-                  />
-                ) : null}
+                  >
+                    <i class="material-icons">save</i>
+                  </button>
 
-                {this.state.showPopupShow ? (
-                  <PopupShow
-                    intelClicked={this.state.intelClicked}
-                    user={this.props.user}
-                    closePopup={() => {
+                  <button
+                    class="show"
+                    onClick={() => {
+                      this.setState({
+                        intelClicked: intel
+                      });
                       this.togglePopupShow();
                     }}
-                  />
-                ) : null}
-              </div>
-            );
-          })}
+                  >
+                    SEE MORE
+                  </button>
+
+                  {this.state.showPopupForm ? (
+                    <PopupForm
+                      intelClicked={this.state.intelClicked}
+                      user={this.props.user}
+                      closePopup={() => {
+                        this.togglePopupForm();
+                      }}
+                    />
+                  ) : null}
+
+                  {this.state.showPopupShow ? (
+                    <PopupShow
+                      intelClicked={this.state.intelClicked}
+                      user={this.props.user}
+                      closePopup={() => {
+                        this.togglePopupShow();
+                      }}
+                    />
+                  ) : null}
+                </div>
+              );
+            })}
+          </div>
         </body>
       </div>
     );
