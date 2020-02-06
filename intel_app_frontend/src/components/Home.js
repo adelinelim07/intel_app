@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Dashboard from "./Dashboard.js";
+import HomeNav from "./HomeNav.js";
 import axios from "axios";
 
 class Home extends Component {
@@ -60,11 +61,17 @@ class Home extends Component {
             </div>
           ) : (
             <div>
+              <div>
+                <HomeNav/>
+              </div>
+              <div class="logo">
+                <span class="unbold">Share</span><span class="bold">In</span>
+              </div>
               {(() => {
-                if (hour < 12) return <h1>Good Morning!</h1>;
+                if (hour < 12) return <div class="title">Good Morning!</div>;
                 if (hour >= 12 && hour < 17)
-                  return <h1>Good Afternoon!</h1>;
-                else return <h1>Good Evening!</h1>;
+                  return <div class="title">Good Afternoon!</div>;
+                else return <div class="title">Good Evening!</div>;
               })()}
               <p>
                 Welcome! Collaborate and share your market intelligence and

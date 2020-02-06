@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Mr+Bedfort|Sacramento&display=swap');
 
 /* https://coolors.co/041725-1b374b-3d232c-c39c93-d6c9ba */
 /* https://coolors.co/ffffff-74b0bc-ccc5b9-d5cedd-326273 */
@@ -33,29 +33,68 @@ html {
   font-family: "Fira Sans", sans-serif; 
 }
 
-h1 {
+.logo {
+  font-size: 4vh;
+  margin-top: 10vh;
+  margin-left: 6vw;
+  color: var(--darkorange);
+ /* font-family: 'Mr Bedfort', cursive;*/
+}
+
+.logo > .unbold {
+  font-family: 'Sacramento', cursive;
+}
+
+.logo > .bold {
+  font-weight: 900;
+  font-family: 'Sacramento', cursive;
+}
+
+.title {
   color: var(--white);
-  font-size: 70px;
-  margin-top: 100px;
-  margin-left: 40px;
+  font-size: 12vh;
+  margin-top: 0.5vh;
+  margin-left: 5vw;
   text-align: left;
-  width: 1000px;
+  width: 70vw;
   font-family: 'Lato', sans-serif;
 }
 
 p {
   color: var(--white);
-  margin-left: 45px;
+  margin-left: 6vw;
   width: 250px;
+  font-size: 2vh
+}
+
+.home-nav {
+  margin-top: 2vh;
+  text-align: right;
+  margin-right: 5vw;
+}
+
+.home-nav > a {
+  text-decoration: none;
+  color: var(--white); 
+  font-size: 2.3vh
+}
+
+.home-nav > a+a {
+  margin-left: 3vw;
+}
+
+.home-nav > a:hover {
+  color: var(--lightteal)
 }
 
 #buttons {
-  margin-top: 40px;
-  margin-left: 40px;
+  margin-top: 8vh;
+  margin-left: 6vw;
 }
 
 #buttons > a {
   background-color: var(--sunshineorange);
+  font-size: 2vh;
   color: var(--white);
   border: none;
   border-radius: 20px;

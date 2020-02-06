@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DailyNewsFeed from "./DailyNewsFeed.js";
-import DailyNewsTop5 from "./DailyNewsTop5.js"
+import DailyNewsTop5 from "./DailyNewsTop5.js";
 import DailyNewsAdded from "./DailyNewsAdded.js";
 
 class DailyNews extends Component {
@@ -32,15 +32,14 @@ class DailyNews extends Component {
           <link
             rel="stylesheet"
             type="text/css"
-            href="../../css/Dashboard.css"
+            href="../../css/DailyNews.css"
           />
         </head>
         <body>
-          <h1>Daily News</h1>
-          <div class="grid-container">
+          <div class="main">
+            <div class="header">Daily News</div>
             <div class="dailynewsfeed">
-              <DailyNewsFeed
-              user={this.props.user} />
+              <DailyNewsFeed user={this.props.user} />
             </div>
             <div class="dailynewsadded">
               <DailyNewsAdded

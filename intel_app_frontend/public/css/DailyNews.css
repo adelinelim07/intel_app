@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Unica+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poiret+One|Pompiere&display=swap");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap");
+
+/* icons ref: https://material.io/resources/icons/?style=baseline */
+
+/* https://coolors.co/041725-1b374b-3d232c-c39c93-d6c9ba */
+/* https://coolors.co/ffffff-74b0bc-ccc5b9-d5cedd-326273 */
+
+:root {
+  --white: #ffffff;
+  --black: #0b0c10;
+  --navy: #104664;
+  --darkorange: #fc4a1a;
+  --sunshineorange: #f78733;
+  --dullpink: #c38d9e;
+  --darkteal: #41b3a3;
+  --lightteal: #85dcba;
+}
+
+html {
+  background: var(--white);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 500px;
+}
+
+* {
+  font-family: "Fira Sans", sans-serif;
+}
+
+.main {
+    background-color: white;
+    height: 100vh;
+    overflow: scroll;
+    position: relative;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50px 30% 30% 30%;
+    grid-template-areas: 
+    "header header"
+    "newsfeed top5"
+    "newsfeed added"
+    "newsfeed added";
+    height: 100vh;
+}
+
+.header {
+    grid-area: header;
+    font-size: 5vh;
+    color: blue;
+}
+
+.dailynewsfeed {
+    grid-area: newsfeed;
+    overflow: scroll;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.dailynewsadded {
+    grid-area: added;
+    overflow: scroll;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.dailynewstop5 {
+    grid-area: top5;
+    overflow: scroll;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+

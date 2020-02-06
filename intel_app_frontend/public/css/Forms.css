@@ -89,6 +89,15 @@ body {
     border:4px solid var(--white);
     border-radius: 20px;
 }
+
+ul {
+    display: block;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+
+
 .form_wrapper h2 {
     font-size:1.5em;
     line-height:1.5em;

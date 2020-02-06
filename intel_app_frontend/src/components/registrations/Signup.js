@@ -9,7 +9,7 @@ class Signup extends Component {
       email: "",
       password: "",
       password_confirmation: "",
-      errors: ""
+      errors: "",
     };
   }
 
@@ -32,7 +32,7 @@ class Signup extends Component {
       .post("http://localhost:3001/users", { user }, { withCredentials: true })
       .then(response => {
         if (response.data.status === "created") {
-          this.props.handleLogin(response.data);
+          // this.props.handleLogin(response.data);
           this.redirect();
         } else {
           this.setState({
@@ -43,7 +43,7 @@ class Signup extends Component {
       .catch(error => console.log("api errors:", error));
   };
   redirect = () => {
-    this.props.history.push("/");
+    this.props.history.push("/login");
   };
   handleErrors = () => {
     return (

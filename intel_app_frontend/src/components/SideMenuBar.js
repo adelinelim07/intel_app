@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Route, withRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  withRouter
+} from "react-router-dom";
 import axios from "axios";
 import Intels from "./Intels.js";
 import DailyNews from "./DailyNews.js";
@@ -35,9 +40,10 @@ class SideBarMenu extends Component {
 
         <aside class="sidenav">
           <div class="sidenav__brand">
-            <i class="fas fa-feather-alt sidenav__brand-icon"></i>
-              Share<span class="text-light">In</span>
-            <i class="fas fa-times sidenav__brand-close"></i>
+            <div class="logo">
+              <span class="unbold">Share</span>
+              <span class="bold">In</span>
+            </div>
           </div>
           <div class="sidenav__profile">
             <div class="sidenav__profile-avatar"></div>
