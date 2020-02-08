@@ -76,7 +76,7 @@ class SuggestedintelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def suggestedintel_params
-      params.require(:suggestedintel).permit(:title, :content, :source, :tags, :user_id, :type, :date)
+      params.require(:suggestedintel).permit(:title, :content, :source, :tags, :user_id, :category, :date)
     end
 end
 
@@ -98,6 +98,7 @@ require 'stemmer'
 def flightglobal  
 fg_output= []
 source = "Flightglobal"
+category = "public"
 url = [
   "https://www.flightglobal.com/searchresults?qkeyword=&PageSize=10&parametrics=WVPUBDATE%7C%5BNOW-1DAY%20TO%20NOW%5D&SortOrder=2",
   "https://www.flightglobal.com/searchresults?qkeyword=&PageSize=10&parametrics=WVPUBDATE%7C%5BNOW-1DAY%20TO%20NOW%5D&cmd=GoToPage&val=2&SortOrder=2"
@@ -131,7 +132,8 @@ for i in 0..1
         :description => description,
         :img => img,
         :link => link,
-        :source => source
+        :source => source,
+        :category => category
         })
     end
     }
@@ -146,6 +148,7 @@ end
 def aviator 
 aviator_output = []
 source = "Aviator-aero"
+category = "public"
 url = 'https://newsroom.aviator.aero/rss/'
 open(url) do |rss|
   feed = RSS::Parser.parse(rss)
@@ -156,7 +159,7 @@ open(url) do |rss|
     contentEncoded = item.content_encoded
     img = contentEncoded.split("src=")[1]
     img = img.split("alt")[0]
-    category = item.category
+    #category = item.category
     link = item.link   
     
     #puts img
@@ -168,7 +171,8 @@ open(url) do |rss|
       :description => description,
       :img => img,
       :link => link,
-      :source => source
+      :source => source,
+      :category => category
     })
   }
   end
@@ -181,6 +185,7 @@ end
 def capa  
   capa_output = []
   source = "CAPA"
+  category = "public"
   url = "https://centreforaviation.com/news"
   page = Nokogiri::HTML(open(url))
   
@@ -193,7 +198,8 @@ def capa
         :index => index,
         :title => title,
         :link => link,
-        :source => source
+        :source => source,
+        :category => category
         })
     end
   }

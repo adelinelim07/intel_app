@@ -12,7 +12,7 @@ class PopupForm extends Component {
         tags: "",
         contact_id: "",
         user_id: this.props.user.id,
-        type: "",
+        category: this.props.intelClicked.category || "",
         remarks: "",
         date: ""
       }
@@ -28,7 +28,6 @@ class PopupForm extends Component {
       .then(response => response.json())
       .then(json => this.setState({ intels: json }))
       .catch(error => console.error(error));
-    console.log(this.state.intels);
   }
 
   handleChange = event => {
@@ -64,7 +63,7 @@ class PopupForm extends Component {
             tags: [],
             contact_id: "",
             user_id: this.props.user.id,
-            type: "",
+            category: this.props.intelClicked.category || "",
             remarks: "",
             date: ""
           },
@@ -109,12 +108,12 @@ class PopupForm extends Component {
                 value={this.state.formInputs.tags}
                 onChange={this.handleChange}
               />
-              <input
+              {/* <input
                 type="text"
                 id="type"
                 value={this.state.formInputs.type}
                 onChange={this.handleChange}
-              />
+              /> */}
               <input
                 type="text"
                 id="remarks"

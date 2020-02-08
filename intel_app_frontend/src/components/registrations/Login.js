@@ -40,7 +40,8 @@ class Login extends Component {
         if (response.data.logged_in) {
           console.log("user", user.email)
           this.props.handleLogin(response.data);
-         this.props.history.push(`/user/${user.email}/dashboard/`);
+        //  this.props.history.push(`/user/${user.email}/dashboard/`);
+        this.props.history.push('/dashboard')
         } else {
           this.setState({
             errors: response.data.errors
@@ -98,17 +99,17 @@ class Login extends Component {
               </div> */}
               <div class="row clearfix">
                 <div class="col_half">
-                  <label>Email</label>
+                  <label>Username</label>
                   <div class="input_field">
                     {" "}
                     <span>
-                      <i class="material-icons">email</i>
+                      <i class="material-icons">person</i>
                     </span>
                     <input
-                      placeholder="email"
+                      placeholder="username"
                       type="text"
-                      name="email"
-                      value={email}
+                      name="username"
+                      value={username}
                       onChange={this.handleChange}
                     />
                   </div>

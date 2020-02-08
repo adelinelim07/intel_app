@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PopupForm from "./DailyNewsForm.js";
 import PopupShow from "./DailyNewsShow.js";
 
+
 class DailyNewsFeed extends Component {
   constructor(props) {
     super(props);
@@ -52,7 +53,6 @@ class DailyNewsFeed extends Component {
     return (
       <div>
         <head>
-          {/* <link rel="stylesheet" type="text/css" href="../../css/Popup.css" /> */}
           <link
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
@@ -70,7 +70,7 @@ class DailyNewsFeed extends Component {
             {this.state.suggestedintels.map(intel => {
               return (
                 <div class="news">
-                  <table>
+                  <table id ="newsfeed">
                     <tr>
                       <td rowspan="2">
                         <img src={intel.img} onerror="this.src='https://png.pngtree.com/png-clipart/20190516/original/pngtree-newspaper-icon-png-image_3568621.jpg'"/>

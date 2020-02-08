@@ -104,20 +104,20 @@ html {
     font-size: 15px;
 }
 
-table {
+#newsfeed {
     table-layout: fixed;
     width: 100%;
 }
 
-table td:nth-child(1) {
+#newsfeed td:nth-child(1) {
     width: 20%;
 }
-table td:nth-child(3) {
+#newsfeed td:nth-child(3) {
     width: 10%;
 }
 
 
-.addIntel, .show {
+.addIntel, .show, .delete, .edit {
     background-color: var(--sunshineorange);
     color: var(--white);
     border: none;
@@ -138,6 +138,15 @@ table td:nth-child(3) {
     border: solid var(--lightgrey);
     background-color: var(--shellbg);
 } 
+
+#addednews {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#addednews td:nth-child(2), #addednews td:nth-child(3),#addednews td:nth-child(4) {
+    width: 35px;
+}
 
 .added-subheader {
     grid-column: 1/2;

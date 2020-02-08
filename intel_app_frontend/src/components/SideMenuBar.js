@@ -93,7 +93,8 @@ class SideBarMenu extends Component {
 
         <div class="content">
           <Route
-            path="/user/:username/dashboard/dailynews"
+            path="/dailynews"
+            //path="/user/:username/dashboard/dailynews"
             render={props => (
               <DailyNews
                 {...props}
