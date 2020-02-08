@@ -110,12 +110,6 @@ class PopupForm extends Component {
               />
               <input
                 type="text"
-                id="category"
-                value={this.state.formInputs.category}
-                onChange={this.handleChange}
-              />
-              <input
-                type="text"
                 id="remarks"
                 value={this.state.formInputs.remarks}
                 onChange={this.handleChange}
