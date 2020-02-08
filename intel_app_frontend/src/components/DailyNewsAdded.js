@@ -51,7 +51,7 @@ class DailyNewsAdded extends Component {
           <div class="added-content">
             {this.state.user
               ? this.state.intels
-                  .filter(intel => intel.user_id === this.state.user.id) 
+                  .filter(intel => intel.user_id === this.state.user.id && intel.category === "public") 
                   .map(intel => {
                     return (
                       <div class="news">
