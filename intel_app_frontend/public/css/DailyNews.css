@@ -5,19 +5,21 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap");
 
 /* icons ref: https://material.io/resources/icons/?style=baseline */
-
+/* grid ref: http://grid.malven.co/ */
 /* https://coolors.co/041725-1b374b-3d232c-c39c93-d6c9ba */
 /* https://coolors.co/ffffff-74b0bc-ccc5b9-d5cedd-326273 */
 
 :root {
   --white: #ffffff;
   --black: #0b0c10;
-  --navy: #104664;
+  --navy: #394263;
   --darkorange: #fc4a1a;
   --sunshineorange: #f78733;
   --dullpink: #c38d9e;
   --darkteal: #41b3a3;
   --lightteal: #85dcba;
+  --lightgrey: rgb(217, 222, 223);
+  --shellbg: white;
 }
 
 html {
@@ -34,33 +36,40 @@ html {
 }
 
 .main {
-    background-color: white;
+    background-color: var(--lightgrey);
     height: 100vh;
     position: relative;
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 5vh 3vh 29vh 3vh 29vh 29vh;
+    grid-template-columns: 10px 47.5% 47.5% 20px;
+    grid-template-rows: 50px 25px 25.5% 25px 25.5% 25.5% 10px ;
     grid-template-areas: 
-    "header header"
-    "newsfeed top5"
-    "newsfeed top5"
-    "newsfeed added"
-    "newsfeed added"
-    "newsfeed added";
+    "header header header header"
+    ". newsfeed top5 ."
+    ". newsfeed top5 ."
+    ". newsfeed added ."
+    ". newsfeed added ."
+    ". newsfeed added ."
+    ". . . .";
     overflow: hidden;
+    grid-gap: 15px;
 }
 
 .header {
     grid-area: header;
-    font-size: 5vh;
-    color: blue;
+    font-size: 4.5vh;
+    background-color: var(--white);
+    color: var(--navy);
+    text-align: center;
+    /* padding: 0 0 0 25px ; */
+    font-weight: 700;
 }
 
 .dailynewsfeed {
     grid-area: newsfeed;
     max-width: 100%;
     max-height: 100%;
-    border: solid blue;
+    background-color: var(--shellbg);
+    border: solid var(--lightgrey);
 } 
 
 .dailynewsfeed-subheader{
@@ -68,18 +77,66 @@ html {
     grid-row: 1/2; 
 }
 
+.dailynewsfeed-subheader, .added-subheader, .top5-subheader{
+    background-color: var(--navy);
+    color: var(--white);
+    padding: 2px 0 2px 10px ;
+    font-size: 20px;
+}
+
 .dailynewsfeed-content{
     grid-column: 1/2;
     grid-row: 2/6; 
-    max-height: 88vh;
+    max-height: 84vh;
     overflow: scroll;
 }
+
+.news {
+    margin: 10px;
+    border: solid var(--white);
+    border-radius: 10px;
+    background-color: rgba(90, 209, 199, 0.2);
+    padding: 10px;
+}
+
+.newsTitle{
+    font-weight: 500;
+    font-size: 15px;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+table td:nth-child(1) {
+    width: 20%;
+}
+table td:nth-child(3) {
+    width: 10%;
+}
+
+
+.addIntel, .show {
+    background-color: var(--sunshineorange);
+    color: var(--white);
+    border: none;
+    margin: 0;
+    border-radius: 50%;
+    width: auto;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
 
 .dailynewsadded {
     grid-area: added;
     max-width: 100%;
     max-height: 100%;
-    border: solid blue;
+    border: solid var(--lightgrey);
+    background-color: var(--shellbg);
 } 
 
 .added-subheader {
@@ -90,7 +147,8 @@ html {
 .added-content{
     grid-column: 1/2;
     grid-row: 2/4; 
-    max-height: 58vh;
+    max-height: 51vh;
+    padding: 5px 0 0 0;
     overflow: scroll;
 }
 
@@ -99,7 +157,8 @@ html {
     grid-area: top5;
     max-width: 100%;
     max-height: 100%;
-    border: solid blue;
+    background-color: var(--shellbg);
+    border: solid var(--lightgrey);
 } 
 
 .top5-subheader{
@@ -110,8 +169,26 @@ html {
 .top5-content{
     grid-column: 1/2;
     grid-row: 2/3; 
-    max-height: 28vh;
+    max-height: 24vh;
     overflow: scroll;
 }
 
+li {
+    list-style-type: none;
+    height: 3vh;
+    margin: 0px auto;
+	padding: 5px;
+}
+
+.keyword {
+    height:3vh;
+	width: 48%;
+	float: left;
+}
+
+.chart {
+    height: 3vh;
+	width: 48%;
+	float: right;
+}
 

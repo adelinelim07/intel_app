@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import SideBarMenu from "./SideMenuBar.js";
+import Cookies from 'js-cookie'
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: this.props.user
+      user: this.props.user,
     };
   }
 
@@ -16,7 +17,7 @@ class Dashboard extends Component {
           <link
             rel="stylesheet"
             type="text/css"
-            href="../../css/Dashboard.css"
+            href="/css/Dashboard.css"
           />
         </head>
         <body>

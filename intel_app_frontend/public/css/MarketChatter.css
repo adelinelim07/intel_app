@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Unica+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poiret+One|Pompiere&display=swap");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap");
+
+/* icons ref: https://material.io/resources/icons/?style=baseline */
+/* grid ref: http://grid.malven.co/ */
+/* https://coolors.co/041725-1b374b-3d232c-c39c93-d6c9ba */
+/* https://coolors.co/ffffff-74b0bc-ccc5b9-d5cedd-326273 */
+
+:root {
+  --white: #ffffff;
+  --black: #0b0c10;
+  --navy: #394263;
+  --darkorange: #fc4a1a;
+  --sunshineorange: #f78733;
+  --dullpink: #c38d9e;
+  --darkteal: #41b3a3;
+  --lightteal: #85dcba;
+  --lightgrey: rgb(217, 222, 223);
+  --shellbg: white;
+}
+
+html {
+  background: var(--white);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 500px;
+}
+
+* {
+  font-family: "Fira Sans", sans-serif;
+}
+
+.main {
+    background-color: var(--lightgrey);
+    height: 100vh;
+    position: relative;
+    display: grid;
+    grid-template-columns: 10px 47.5% 47.5% 20px;
+    grid-template-rows: 50px 25px 25.5% 25px 25.5% 25.5% 10px ;
+    grid-template-areas: 
+    "header header header header"
+    ". newsfeed top5 ."
+    ". newsfeed top5 ."
+    ". newsfeed added ."
+    ". newsfeed added ."
+    ". newsfeed added ."
+    ". . . .";
+    overflow: hidden;
+    grid-gap: 15px;
+}
+
+.header {
+    grid-area: header;
+    font-size: 4.5vh;
+    background-color: var(--white);
+    color: var(--navy);
+    text-align: center;
+    /* padding: 0 0 0 25px ; */
+    font-weight: 700;
+}

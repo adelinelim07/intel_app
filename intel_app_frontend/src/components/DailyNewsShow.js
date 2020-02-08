@@ -11,6 +11,11 @@ class PopupShow extends Component {
               type="text/css"
               href="../../css/DailyNews.css"
             />
+            <link
+              rel="stylesheet"
+              type="text/css"
+              href="../../css/Popup.css"
+            />
           </head>
           <h4>{this.props.intelClicked.title}</h4>
           <p>{this.props.intelClicked.description}</p>

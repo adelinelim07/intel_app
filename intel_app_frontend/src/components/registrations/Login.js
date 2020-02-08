@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Cookies from 'js-cookie'
 
 class Login extends Component {
   constructor(props) {
@@ -30,13 +31,16 @@ class Login extends Component {
       email: email,
       password: password
     };
+    console.log(user.username);
+    Cookies.set('user', user, { path: '' })
 
     axios
       .post("http://localhost:3001/login", { user }, { withCredentials: true })
       .then(response => {
         if (response.data.logged_in) {
+          console.log("user", user.email)
           this.props.handleLogin(response.data);
-          this.redirect("");
+         this.props.history.push(`/user/${user.email}/dashboard/`);
         } else {
           this.setState({
             errors: response.data.errors
@@ -45,9 +49,7 @@ class Login extends Component {
       })
       .catch(error => console.log("api errors:", error));
   };
-  redirect = () => {
-    this.props.history.push("/dashboard");
-  };
+
   handleErrors = () => {
     return (
       <div>

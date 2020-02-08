@@ -34,17 +34,18 @@ class DailyNewsAdded extends Component {
           <link
             rel="stylesheet"
             type="text/css"
-            href="../../css/DailyNews.css"
+            href="/css/DailyNews.css"
           />
+          
         </head>
         <body>
           <div class="added-subheader">Recently Saved</div>
           <div class="added-content">
             {this.state.user
               ? this.state.intels
-                  .filter(intel => intel.user_id === this.state.user.id)
+                  .filter(intel => intel.user_id === this.state.user.id )
                   .map(intel => {
-                    return <div>{intel.title}</div>;
+                    return <div class="news">{intel.title}</div>;
                   })
               : null}
           </div>

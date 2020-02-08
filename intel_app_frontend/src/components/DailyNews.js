@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import DailyNewsFeed from "./DailyNewsFeed.js";
 import DailyNewsTop5 from "./DailyNewsTop5.js";
 import DailyNewsAdded from "./DailyNewsAdded.js";
+import Cookies from 'js-cookie'
 
 class DailyNews extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: this.props.user,
-      intels: []
+      intels: [],
     };
   }
 
@@ -32,7 +33,7 @@ class DailyNews extends Component {
           <link
             rel="stylesheet"
             type="text/css"
-            href="../../css/DailyNews.css"
+            href="/css/DailyNews.css"
           />
         </head>
         <body>

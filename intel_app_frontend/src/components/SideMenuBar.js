@@ -6,7 +6,7 @@ import {
   withRouter
 } from "react-router-dom";
 import axios from "axios";
-import Intels from "./Intels.js";
+import MarketChatter from "./MarketChatter.js";
 import DailyNews from "./DailyNews.js";
 
 class SideBarMenu extends Component {
@@ -34,7 +34,7 @@ class SideBarMenu extends Component {
           <link
             rel="stylesheet"
             type="text/css"
-            href="../../css/Dashboard.css"
+            href="/css/Dashboard.css"
           />
         </head>
 
@@ -64,7 +64,7 @@ class SideBarMenu extends Component {
                     <i class="fas fa-envelope"></i>
                   </span>
                   <span class="navList__subheading-title">
-                    <Link to="/dailynews"> Daily News </Link>
+                    <Link to="dailynews"> Daily News </Link>
                   </span>
                 </div>
               </li>
@@ -74,7 +74,7 @@ class SideBarMenu extends Component {
                     <i class="fas fa-eye"></i>
                   </span>
                   <span class="navList__subheading-title">
-                    <Link to="/intels"> Market Chatter </Link>
+                    <Link to="/marketchatter"> Market Chatter </Link>
                   </span>
                 </div>
               </li>
@@ -93,8 +93,7 @@ class SideBarMenu extends Component {
 
         <div class="content">
           <Route
-            exact
-            path="/dailynews"
+            path="/user/:username/dashboard/dailynews"
             render={props => (
               <DailyNews
                 {...props}
@@ -106,9 +105,9 @@ class SideBarMenu extends Component {
           />
           <Route
             exact
-            path="/intels"
+            path="/marketchatter"
             render={props => (
-              <Intels
+              <MarketChatter
                 {...props}
                 handleLogout={this.handleLogout}
                 loggedInStatus={this.state.isLoggedIn}

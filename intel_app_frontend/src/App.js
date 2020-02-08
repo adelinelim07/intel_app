@@ -5,10 +5,10 @@ import Home from "./components/Home";
 import Login from "./components/registrations/Login";
 import Signup from "./components/registrations/Signup";
 import Dashboard from "./components/Dashboard";
+import Cookies from "js-cookie";
+
 // import DailyNews from "./components/DailyNews";
 // import Intels from "./components/Intels";
-
-
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class App extends Component {
   componentDidMount() {
     this.loginStatus();
   }
-  
+
   loginStatus = () => {
     axios
       .get("http://localhost:3001/logged_in", { withCredentials: true })
@@ -37,10 +37,15 @@ class App extends Component {
   };
 
   handleLogin = data => {
-    this.setState({
-      isLoggedIn: true,
-      user: data.user
-    });
+    this.setState(
+      {
+        isLoggedIn: true,
+        user: data.user
+      }
+      // function() {
+      //   Cookies.set('user', this.state.user, { path: '' })
+      // }
+    );
   };
 
   handleLogout = () => {
@@ -48,6 +53,7 @@ class App extends Component {
       isLoggedIn: false,
       user: {}
     });
+    Cookies.remove("user"); // removed!
   };
 
   render() {
@@ -78,7 +84,7 @@ class App extends Component {
               )}
             />
             <Route
-              exact
+              // exact
               path="/dashboard"
               render={props => (
                 <Dashboard
@@ -89,7 +95,19 @@ class App extends Component {
                 />
               )}
             />
-             <Route
+            <Route
+              exact
+              path="/user/:username/dashboard"
+              render={props => (
+                <Dashboard
+                  {...props}
+                  handleLogout={this.handleLogout}
+                  loggedInStatus={this.state.isLoggedIn}
+                  user={this.state.user}
+                />
+              )}
+            />
+            <Route
               exact
               path="/"
               render={props => (
