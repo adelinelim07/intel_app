@@ -12,7 +12,7 @@ class PopupForm extends Component {
         tags: "",
         contact_id: "",
         user_id: this.props.user.id,
-        category: this.props.intelClicked.category || "",
+        category: this.props.intelClicked.category,
         remarks: "",
         date: ""
       }
@@ -63,7 +63,7 @@ class PopupForm extends Component {
             tags: [],
             contact_id: "",
             user_id: this.props.user.id,
-            category: this.props.intelClicked.category || "",
+            category: this.props.intelClicked.category,
             remarks: "",
             date: ""
           },
@@ -108,12 +108,12 @@ class PopupForm extends Component {
                 value={this.state.formInputs.tags}
                 onChange={this.handleChange}
               />
-              {/* <input
+              <input
                 type="text"
-                id="type"
-                value={this.state.formInputs.type}
+                id="category"
+                value={this.state.formInputs.category}
                 onChange={this.handleChange}
-              /> */}
+              />
               <input
                 type="text"
                 id="remarks"

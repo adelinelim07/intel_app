@@ -31,11 +31,11 @@ class DailyNewsAdded extends Component {
       .then(response => response.json())
       .then(json => this.setState({ intels: json }))
       .catch(error => console.error(error));
-    console.log(this.state.intels);
+    // console.log(this.state.intels);
   }
 
   render() {
-    console.log(this.state.user);
+    // console.log(this.state.user);
 
     return (
       <div>
@@ -51,7 +51,7 @@ class DailyNewsAdded extends Component {
           <div class="added-content">
             {this.state.user
               ? this.state.intels
-                  .filter(intel => intel.user_id === this.state.user.id)
+                  .filter(intel => intel.user_id === this.state.user.id) 
                   .map(intel => {
                     return (
                       <div class="news">
