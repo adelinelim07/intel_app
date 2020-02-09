@@ -47,7 +47,7 @@ class SideBarMenu extends Component {
           </div>
           <div class="sidenav__profile">
             <div class="sidenav__profile-avatar"></div>
-            <div class="sidenav__profile-title text-light">Placeholder</div>
+            <div class="sidenav__profile-title text-light">{this.state.user.username}</div>
           </div>
           <div class="row row--align-v-center row--align-h-center">
             <ul class="navList">

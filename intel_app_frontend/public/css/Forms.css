@@ -96,8 +96,6 @@ ul {
     margin-top: 10px;
 }
 
-
-
 .form_wrapper h2 {
     font-size:1.5em;
     line-height:1.5em;
@@ -108,12 +106,7 @@ ul {
     margin:-15px -15px 15px;
     padding:10px 0;
 }
-.form_wrapper h3 {
-    font-size:1.1em;
-    font-weight:normal;
-    line-height:1.5em;
-    margin:0;
-}
+
 .form_wrapper .row {
     margin:10px -15px;
 }

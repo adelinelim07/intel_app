@@ -49,11 +49,11 @@
 
   .form_wrapper {
     background:rgba(255,255,255,0.7);
-    width:500px;
+    width:auto;
     max-width:100%;
     box-sizing:border-box;
     padding:15px;
-    margin:10% auto 0;
+    margin: 0;
     position:relative;
     z-index:1;
     -webkit-box-shadow:0 23px 4px -21px rgba(0, 0, 0, 0.9);
@@ -73,24 +73,6 @@ ul {
     margin-top: 10px;
 }
 
-
-
-.form_wrapper h2 {
-    font-size:1.5em;
-    line-height:1.5em;
-    margin:0;
-}
-.form_wrapper .title_container {
-    text-align:center;
-    margin:-15px -15px 15px;
-    padding:10px 0;
-}
-.form_wrapper h3 {
-    font-size:1.1em;
-    font-weight:normal;
-    line-height:1.5em;
-    margin:0;
-}
 .form_wrapper .row {
     margin:10px -15px;
 }
@@ -140,17 +122,24 @@ ul {
 .form_wrapper textarea {
     height:8em;
 }
-.form_wrapper input[type="text"]:focus, .form_wrapper input[type="email"]:focus, .form_wrapper input[type="password"]:focus, textarea:focus {
+
+.form_wrapper #content {
+    height: 10em;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.form_wrapper input[type="text"]:focus, .form_wrapper input[type="date"]:focus, textarea:focus {
     -webkit-box-shadow:0 0 2px 1px rgba(255, 169, 0, 0.5);
     -moz-box-shadow:0 0 2px 1px rgba(255, 169, 0, 0.5);
     box-shadow:0 0 2px 1px rgba(255, 169, 0, 0.5);
     border:1px solid #f5ba1a;
 }
-.form_wrapper input[type="submit"] {
+.form_wrapper input[type="submit"], .close {
     background:var(--sunshineorange);
     height:50px;
     line-height:50px;
-    width:100%;
+    width:40%;
     border:none;
     outline:none;
     cursor:pointer;
@@ -163,9 +152,10 @@ ul {
     margin-top :30px;
     border-radius: 20px;
 }
-.form_wrapper input[type="submit"]:hover, .form_wrapper input[type="submit"]:focus {
+.form_wrapper input[type="submit"]:hover, .form_wrapper input[type="submit"]:focus, .close:hover, .close:focus {
     background: var(--darkorange);
 }
+
 
 
 @media (max-width: 600px) {

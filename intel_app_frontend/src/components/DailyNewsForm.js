@@ -82,38 +82,52 @@ class PopupForm extends Component {
 
         <div className="popup">
           <div className="popup_inner">
+          <div class="form_wrapper">
+          <div class="form_container">
             <form onSubmit={this.handleSubmit}>
-              <label htmlFor="title">Title</label>
-              <input
-                type="text"
-                id="title"
-                value={this.state.formInputs.title}
-                onChange={this.handleChange}
-              />
-              <input
-                type="text"
-                id="content"
-                value={this.state.formInputs.content}
-                onChange={this.handleChange}
-              />
+              <div class="row clearfix">
+                <label>Title</label>
+                <input
+                  type="text"
+                  id="title"
+                  value={this.state.formInputs.title}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div class="row clearfix">
+                <label>Content</label>
+                <textarea rows="10" cols="30"
+                  type="text"
+                  id="content"
+                  value={this.state.formInputs.content}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div class="row clearfix">
               <input
                 type="text"
                 id="source"
                 value={this.state.formInputs.source}
                 onChange={this.handleChange}
               />
+              </div>
+              <div class="row clearfix">
               <input
                 type="text"
                 id="tags"
                 value={this.state.formInputs.tags}
                 onChange={this.handleChange}
               />
+              </div>
+              <div class="row clearfix">
               <input
                 type="text"
                 id="remarks"
                 value={this.state.formInputs.remarks}
                 onChange={this.handleChange}
               />
+              </div>
+              <div class="row clearfix">
               <input
                 type="date"
                 id="date"
@@ -126,12 +140,12 @@ class PopupForm extends Component {
                 value={this.state.formInputs.contact_id}
                 onChange={this.handleChange}
               />
+              </div>
               <input type="submit" className="submit" />
+              <button class= "close" onClick={this.props.closePopup}>X</button>
             </form>
-
-            <p>{this.props.intelClicked.title}</p>
-            <p>{this.props.intelClicked.description}</p>
-            <button onClick={this.props.closePopup}>close me</button>
+            </div>
+            </div>
           </div>
         </div>
       </div>
