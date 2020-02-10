@@ -41,7 +41,7 @@ html {
     position: relative;
     display: grid;
     grid-template-columns: 10px 47.5% 47.5% 20px;
-    grid-template-rows: 50px 25px 25.5% 25px 25.5% 25.5% 10px ;
+    grid-template-rows: 140px 25px 21.5% 25px 21.5% 21.5% 10px ;
     grid-template-areas: 
     "header header header header"
     ". newsfeed top5 ."
@@ -57,10 +57,10 @@ html {
 .header {
     grid-area: header;
     font-size: 4.5vh;
-    background-color: var(--white);
-    color: var(--navy);
+    background-color: var(--navy);
+    color: var(--white);
     text-align: center;
-    /* padding: 0 0 0 25px ; */
+    padding-top: 4vh;
     font-weight: 700;
 }
 
@@ -77,6 +77,15 @@ html {
     grid-row: 1/2; 
 }
 
+.searchbar {
+    padding: 2px;
+    margin: 5px 12px 0 12px;
+}
+
+.searchbar > input {
+    width: 99%;
+}
+
 .dailynewsfeed-subheader, .added-subheader, .top5-subheader{
     background-color: var(--navy);
     color: var(--white);
@@ -87,7 +96,7 @@ html {
 .dailynewsfeed-content{
     grid-column: 1/2;
     grid-row: 2/6; 
-    max-height: 84vh;
+    max-height: 70vh;
     overflow: scroll;
 }
 
@@ -156,7 +165,7 @@ html {
 .added-content{
     grid-column: 1/2;
     grid-row: 2/4; 
-    max-height: 51vh;
+    max-height: 42vh;
     padding: 5px 0 0 0;
     overflow: scroll;
 }
@@ -178,7 +187,7 @@ html {
 .top5-content{
     grid-column: 1/2;
     grid-row: 2/3; 
-    max-height: 24vh;
+    max-height: 20vh;
     overflow: scroll;
 }
 

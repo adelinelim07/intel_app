@@ -4,7 +4,6 @@ class PopupForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      intels: [],
       formInputs: {
         title: this.props.intelClicked.title || "",
         content: this.props.intelClicked.description || "",
@@ -17,17 +16,6 @@ class PopupForm extends Component {
         date: ""
       }
     };
-  }
-
-  componentDidMount() {
-    this.getIntels();
-  }
-
-  getIntels() {
-    fetch("http://localhost:3001/intels")
-      .then(response => response.json())
-      .then(json => this.setState({ intels: json }))
-      .catch(error => console.error(error));
   }
 
   handleChange = event => {

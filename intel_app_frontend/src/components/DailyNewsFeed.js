@@ -10,6 +10,8 @@ class DailyNewsFeed extends Component {
       showPopupForm: false,
       showPopupShow: false,
       suggestedintels: [],
+      query: "",
+      filteredsuggestedintels: [],
       intelClicked: "",
       user: this.props.user
     };
@@ -28,18 +30,43 @@ class DailyNewsFeed extends Component {
     console.log(this.state.intels);
   }
 
-  getSuggestedIntels() {
+  getSuggestedIntels = ()=> {
     fetch("http://localhost:3001/suggestedintels")
       .then(response => response.json())
-      .then(json => this.setState({ suggestedintels: json }))
+      .then(suggestedintels => {
+        const { query } = this.state;
+        const filteredsuggestedintels = suggestedintels.filter(element => {
+          return element.title.toLowerCase().includes(query.toLowerCase());
+        });
+
+        this.setState({
+          suggestedintels,
+          filteredsuggestedintels
+        });
+      })
       .catch(error => console.error(error));
-    console.log(this.state.suggestedintels);
   }
 
-  togglePopupForm = () => {
-    this.setState({
-      showPopupForm: !this.state.showPopupForm
+  filterSuggestedIntel = event => {
+    const query = event.target.value;
+
+    this.setState(prevState => {
+      const filteredsuggestedintels = prevState.suggestedintels.filter(element => {
+        return element.title.toLowerCase().includes(query.toLowerCase());
+      });
+
+      return {
+        query,
+        filteredsuggestedintels
+      };
     });
+  }
+
+  togglePopupForm = (intel) => {
+      this.setState({
+        intelClicked: intel,
+        showPopupForm: !this.state.showPopupForm
+      });
   };
 
   togglePopupShow = () => {
@@ -66,8 +93,11 @@ class DailyNewsFeed extends Component {
         </head>
         <body>
           <div class="dailynewsfeed-subheader">Today's News Feed</div>
+          <form class="searchbar">
+            <input type="text" placeholder="Search" onChange = {this.filterSuggestedIntel}/>
+          </form>
           <div class="dailynewsfeed-content">
-            {this.state.suggestedintels.map(intel => {
+            {this.state.filteredsuggestedintels.map(intel => {
               return (
                 <div class="news">
                   <table id ="newsfeed">
@@ -84,10 +114,7 @@ class DailyNewsFeed extends Component {
                         <button
                           class="addIntel"
                           onClick={() => {
-                            this.setState({
-                              intelClicked: intel
-                            });
-                            this.togglePopupForm();
+                            this.togglePopupForm(intel);
                           }}
                         >
                           <i class="material-icons">save</i>
@@ -109,12 +136,12 @@ class DailyNewsFeed extends Component {
                           <i class="material-icons">zoom_in</i>
                         </button>
 
-                        {this.state.showPopupForm ? (
+                        {this.state.showPopupForm? (
                           <PopupForm
                             intelClicked={this.state.intelClicked}
                             user={this.props.user}
                             closePopup={() => {
-                              this.togglePopupForm();
+                              this.togglePopupForm(intel);
                             }}
                           />
                         ) : null}
