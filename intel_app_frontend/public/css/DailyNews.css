@@ -41,7 +41,7 @@ html {
     position: relative;
     display: grid;
     grid-template-columns: 10px 47.5% 47.5% 20px;
-    grid-template-rows: 140px 25px 21.5% 25px 21.5% 21.5% 10px ;
+    grid-template-rows: 50px 25px 25% 25px 25% 25% 10px ;
     grid-template-areas: 
     "header header header header"
     ". newsfeed top5 ."
@@ -60,7 +60,6 @@ html {
     background-color: var(--navy);
     color: var(--white);
     text-align: center;
-    padding-top: 4vh;
     font-weight: 700;
 }
 
@@ -96,8 +95,9 @@ html {
 .dailynewsfeed-content{
     grid-column: 1/2;
     grid-row: 2/6; 
-    max-height: 70vh;
-    overflow: scroll;
+    max-height: 80vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .news {
@@ -165,9 +165,10 @@ html {
 .added-content{
     grid-column: 1/2;
     grid-row: 2/4; 
-    max-height: 42vh;
+    max-height: 51vh;
     padding: 5px 0 0 0;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 
@@ -187,8 +188,9 @@ html {
 .top5-content{
     grid-column: 1/2;
     grid-row: 2/3; 
-    max-height: 20vh;
-    overflow: scroll;
+    max-height: 25vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 li {
