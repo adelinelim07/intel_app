@@ -8,6 +8,7 @@ import {
 import axios from "axios";
 import MarketChatter from "./MarketChatter.js";
 import DailyNews from "./DailyNews.js";
+import Contacts from "./Contacts.js"
 
 class SideBarMenu extends Component {
   constructor(props) {
@@ -52,16 +53,19 @@ class SideBarMenu extends Component {
           <div class="row row--align-v-center row--align-h-center">
             <ul class="navList">
               <li class="navList__heading">
-                Home<i class="far fa-file-alt"></i>
+                Home
+              </li>
+              <li class="navList__heading">
+              <Link to="/contacts"> Contacts </Link>
               </li>
 
               <li class="navList__heading">
-                Intels<i class="far fa-envelope"></i>
+                Intels
               </li>
               <li>
                 <div class="navList__subheading row row--align-v-center">
                   <span class="navList__subheading-icon">
-                    <i class="fas fa-envelope"></i>
+                    
                   </span>
                   <span class="navList__subheading-title">
                     <Link to="dailynews"> Daily News </Link>
@@ -71,7 +75,7 @@ class SideBarMenu extends Component {
               <li>
                 <div class="navList__subheading row row--align-v-center">
                   <span class="navList__subheading-icon">
-                    <i class="fas fa-eye"></i>
+                    
                   </span>
                   <span class="navList__subheading-title">
                     <Link to="/marketchatter"> Market Chatter </Link>
@@ -79,13 +83,13 @@ class SideBarMenu extends Component {
                 </div>
               </li>
               <li class="navList__heading">
-                Analysis<i class="far fa-image"></i>
+                Analysis
               </li>
               <li class="navList__heading">
                 <Link to="/logout" onClick={this.handleLogout}>
                   Log Out
                 </Link>
-                <i class="far fa-image"></i>
+                
               </li>
             </ul>
           </div>
@@ -109,6 +113,18 @@ class SideBarMenu extends Component {
             path="/marketchatter"
             render={props => (
               <MarketChatter
+                {...props}
+                handleLogout={this.handleLogout}
+                loggedInStatus={this.state.isLoggedIn}
+                user={this.state.user}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/contacts"
+            render={props => (
+              <Contacts
                 {...props}
                 handleLogout={this.handleLogout}
                 loggedInStatus={this.state.isLoggedIn}

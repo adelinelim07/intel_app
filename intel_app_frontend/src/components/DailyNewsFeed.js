@@ -27,7 +27,6 @@ class DailyNewsFeed extends Component {
       .then(response => response.json())
       .then(json => this.setState({ intels: json }))
       .catch(error => console.error(error));
-    console.log(this.state.intels);
   }
 
   getSuggestedIntels = ()=> {
