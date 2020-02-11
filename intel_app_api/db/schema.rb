@@ -10,19 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_105030) do
+ActiveRecord::Schema.define(version: 2020_02_11_023547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "business"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string "name"
     t.string "position"
-    t.string "company"
     t.string "email"
     t.integer "number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_contacts_on_company_id"
   end
 
   create_table "intels", force: :cascade do |t|
@@ -30,14 +39,14 @@ ActiveRecord::Schema.define(version: 2020_02_08_105030) do
     t.string "content"
     t.string "source"
     t.string "tags"
-    t.bigint "contact_id", null: false
     t.bigint "user_id", null: false
     t.string "category"
     t.string "remarks"
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["contact_id"], name: "index_intels_on_contact_id"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_intels_on_company_id"
     t.index ["user_id"], name: "index_intels_on_user_id"
   end
 
@@ -62,7 +71,8 @@ ActiveRecord::Schema.define(version: 2020_02_08_105030) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "intels", "contacts"
+  add_foreign_key "contacts", "companies"
+  add_foreign_key "intels", "companies"
   add_foreign_key "intels", "users"
   add_foreign_key "suggestedintels", "users"
 end
