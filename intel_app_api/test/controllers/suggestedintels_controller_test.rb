@@ -17,7 +17,7 @@ class SuggestedintelsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create suggestedintel" do
     assert_difference('Suggestedintel.count') do
-      post suggestedintels_url, params: { suggestedintel: { content: @suggestedintel.content, date: @suggestedintel.date, source: @suggestedintel.source, tags: @suggestedintel.tags, title: @suggestedintel.title, type: @suggestedintel.type, user_id: @suggestedintel.user_id } }
+      post suggestedintels_url, params: { suggestedintel: { content: @suggestedintel.content, date: @suggestedintel.date, source: @suggestedintel.source, tags: @suggestedintel.tags, title: @suggestedintel.title, category: @suggestedintel.category, user_id: @suggestedintel.user_id } }
     end
 
     assert_redirected_to suggestedintel_url(Suggestedintel.last)
@@ -34,7 +34,7 @@ class SuggestedintelsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update suggestedintel" do
-    patch suggestedintel_url(@suggestedintel), params: { suggestedintel: { content: @suggestedintel.content, date: @suggestedintel.date, source: @suggestedintel.source, tags: @suggestedintel.tags, title: @suggestedintel.title, type: @suggestedintel.type, user_id: @suggestedintel.user_id } }
+    patch suggestedintel_url(@suggestedintel), params: { suggestedintel: { content: @suggestedintel.content, date: @suggestedintel.date, source: @suggestedintel.source, tags: @suggestedintel.tags, title: @suggestedintel.title, category: @suggestedintel.category, user_id: @suggestedintel.user_id } }
     assert_redirected_to suggestedintel_url(@suggestedintel)
   end
 

@@ -17,7 +17,7 @@ class IntelsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create intel" do
     assert_difference('Intel.count') do
-      post intels_url, params: { intel: { contact_id: @intel.contact_id, content: @intel.content, date: @intel.date, remarks: @intel.remarks, source: @intel.source, tags: @intel.tags, title: @intel.title, type: @intel.type, user_id: @intel.user_id } }
+      post intels_url, params: { intel: { contact_id: @intel.contact_id, content: @intel.content, date: @intel.date, remarks: @intel.remarks, source: @intel.source, tags: @intel.tags, title: @intel.title, category: @intel.category, user_id: @intel.user_id } }
     end
 
     assert_redirected_to intel_url(Intel.last)
@@ -34,7 +34,7 @@ class IntelsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update intel" do
-    patch intel_url(@intel), params: { intel: { contact_id: @intel.contact_id, content: @intel.content, date: @intel.date, remarks: @intel.remarks, source: @intel.source, tags: @intel.tags, title: @intel.title, type: @intel.type, user_id: @intel.user_id } }
+    patch intel_url(@intel), params: { intel: { contact_id: @intel.contact_id, content: @intel.content, date: @intel.date, remarks: @intel.remarks, source: @intel.source, tags: @intel.tags, title: @intel.title, category: @intel.category, user_id: @intel.user_id } }
     assert_redirected_to intel_url(@intel)
   end
 
