@@ -9,7 +9,7 @@ class PopupForm extends Component {
         content: this.props.intelClicked.description || "",
         source: this.props.intelClicked.source || "",
         tags: "",
-        contact_id: "",
+        company_id: "",
         user_id: this.props.user.id,
         category: this.props.intelClicked.category,
         remarks: "",
@@ -49,7 +49,7 @@ class PopupForm extends Component {
             content: this.props.intelClicked.description || "",
             source: this.props.intelClicked.source || "",
             tags: [],
-            contact_id: "",
+            company_id: "",
             user_id: this.props.user.id,
             category: this.props.intelClicked.category,
             remarks: "",
@@ -124,7 +124,7 @@ class PopupForm extends Component {
               />
               <input
                 type="text"
-                id="contact_id"
+                id="company_id"
                 value={this.state.formInputs.contact_id}
                 onChange={this.handleChange}
               />
