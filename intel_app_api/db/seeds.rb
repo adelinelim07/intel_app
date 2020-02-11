@@ -6,15 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Company.create(
+    name: "Singapore Airlines",
+    business: "Airline",
+    address: "Changi Airport",
+)
 
-Intel.create(
-    title: "TEST TITLE",
-    content: "TEST CONTENT",
-    source: "TEST SOURCE",
-    tags: "TEST TAG",
-    contact_id: 1,
-    user_id: 1,
-    type: "test type yoohoooo",
-    remarks: "TEST REMARK",
-    date: "TEST DATE"
+
+Contact.create(
+    name: "Goh",
+    position: "CEO",
+    email: "goh@sia.com.sg",
+    number: 659125,
+    company_id: 1
 )

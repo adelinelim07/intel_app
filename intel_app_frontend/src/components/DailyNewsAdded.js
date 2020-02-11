@@ -17,6 +17,27 @@ class DailyNewsAdded extends Component {
     this.getIntels();
   }
 
+  // handleUpdate = id => {
+  //   fetch(`http://localhost:3001/intels/${id}`, 
+  //   {
+  //     method: 'PUT',
+  //     body: JSON.stringify({intel: intel}),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   }).then((response) => { 
+  //       this.updateIntel(intel)
+  //     })
+  // }
+
+  // updateIntel= intel =>{
+  //   let newIntels = this.state.intels.filter((element) => element.id !== intel.id)
+  //   newIntels.push(intel)
+  //   this.setState({
+  //     intels: newIntels
+  //   })
+  // }
+
   handleDelete = id => {
     fetch(`http://localhost:3001/intels/${id}`, { method: "delete" }).then(
       response => {
@@ -65,12 +86,16 @@ class DailyNewsAdded extends Component {
                               </button>
                             </td>
                             <td>
-                              <button class="show">
+                              <button class="show"
+                               onClick={()=> this.handleShow(intel.id)}
+                              >
                                 <i class="material-icons">zoom_in</i>
                               </button>
                             </td>
                             <td>
-                              <button class="edit">
+                              <button class="edit"
+                                // onClick={()=> this.handleEdit(intel.id)}
+                              >
                                 <i class="material-icons">edit</i>
                               </button>
                             </td>

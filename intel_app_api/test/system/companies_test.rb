@@ -16,7 +16,6 @@ class CompaniesTest < ApplicationSystemTestCase
 
     fill_in "Address", with: @company.address
     fill_in "Business", with: @company.business
-    fill_in "Contact", with: @company.contact_id
     fill_in "Name", with: @company.name
     click_on "Create Company"
 
@@ -30,7 +29,6 @@ class CompaniesTest < ApplicationSystemTestCase
 
     fill_in "Address", with: @company.address
     fill_in "Business", with: @company.business
-    fill_in "Contact", with: @company.contact_id
     fill_in "Name", with: @company.name
     click_on "Update Company"
 

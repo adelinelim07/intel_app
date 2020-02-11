@@ -4,10 +4,10 @@ one:
   name: MyString
   business: MyString
   address: MyString
-  contact: one
+
 
 two:
   name: MyString
   business: MyString
   address: MyString
-  contact: two
+
