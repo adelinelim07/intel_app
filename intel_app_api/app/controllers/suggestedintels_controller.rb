@@ -105,7 +105,7 @@ url = [
 ]
 
 for i in 0..1
-  page = Nokogiri::HTML(open(url[0]))
+  page = Nokogiri::HTML(open(url[i]))
 
   elements = page.css("li").each_with_index {|line, index|
     title = line.css("h3").text

@@ -20,6 +20,7 @@ class DailyNewsAdded extends Component {
     this.getIntels();
   }
 
+
   handleEdit = () => {
     this.setState({
       edit: !this.state.edit
@@ -80,7 +81,9 @@ class DailyNewsAdded extends Component {
                               </button>
                             </td>
                             <td>
-                              <button class="show">
+                              <button class="show"
+                               onClick={()=> this.handleShow(intel.id)}
+                              >
                                 <i class="material-icons">zoom_in</i>
                               </button>
                             </td>
