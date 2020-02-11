@@ -62,7 +62,7 @@ class DailyNewsFeed extends Component {
     });
   };
 
-  togglePopupForm = intel => {
+  togglePopupForm = (intel) => {
     this.setState({
       intelClicked: intel,
       showPopupForm: !this.state.showPopupForm
