@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PopupForm from "./DailyNewsForm.js";
 import PopupShow from "./DailyNewsShow.js";
 
-
 class DailyNewsFeed extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +28,7 @@ class DailyNewsFeed extends Component {
       .catch(error => console.error(error));
   }
 
-  getSuggestedIntels = ()=> {
+  getSuggestedIntels = () => {
     fetch("http://localhost:3001/suggestedintels")
       .then(response => response.json())
       .then(suggestedintels => {
@@ -44,32 +43,35 @@ class DailyNewsFeed extends Component {
         });
       })
       .catch(error => console.error(error));
-  }
+  };
 
   filterSuggestedIntel = event => {
     const query = event.target.value;
 
     this.setState(prevState => {
-      const filteredsuggestedintels = prevState.suggestedintels.filter(element => {
-        return element.title.toLowerCase().includes(query.toLowerCase());
-      });
+      const filteredsuggestedintels = prevState.suggestedintels.filter(
+        element => {
+          return element.title.toLowerCase().includes(query.toLowerCase());
+        }
+      );
 
       return {
         query,
         filteredsuggestedintels
       };
     });
-  }
-
-  togglePopupForm = (intel) => {
-      this.setState({
-        intelClicked: intel,
-        showPopupForm: !this.state.showPopupForm
-      });
   };
 
-  togglePopupShow = () => {
+  togglePopupForm = (intel) => {
     this.setState({
+      intelClicked: intel,
+      showPopupForm: !this.state.showPopupForm
+    });
+  };
+
+  togglePopupShow = (intel) => {
+    this.setState({
+      intelClicked: intel,
       showPopupShow: !this.state.showPopupShow
     });
   };
@@ -84,25 +86,28 @@ class DailyNewsFeed extends Component {
             rel="stylesheet"
           ></link>
           <link rel="stylesheet" type="text/css" href="../../css/Popup.css" />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/css/DailyNews.css"
-          />
+          <link rel="stylesheet" type="text/css" href="/css/DailyNews.css" />
         </head>
         <body>
           <div class="dailynewsfeed-subheader">Today's News Feed</div>
           <form class="searchbar">
-            <input type="text" placeholder="Search" onChange = {this.filterSuggestedIntel}/>
+            <input
+              type="text"
+              placeholder="Search"
+              onChange={this.filterSuggestedIntel}
+            />
           </form>
           <div class="dailynewsfeed-content">
             {this.state.filteredsuggestedintels.map(intel => {
               return (
                 <div class="news">
-                  <table id ="newsfeed">
+                  <table id="newsfeed">
                     <tr>
                       <td rowspan="2">
-                        <img src={intel.img} onerror="this.src='https://png.pngtree.com/png-clipart/20190516/original/pngtree-newspaper-icon-png-image_3568621.jpg'"/>
+                        <img
+                          src={intel.img}
+                          onerror="this.src='https://png.pngtree.com/png-clipart/20190516/original/pngtree-newspaper-icon-png-image_3568621.jpg'"
+                        />
                       </td>
                       <td rowspan="2">
                         <div class="newsTitle">{intel.title}</div>
@@ -111,6 +116,7 @@ class DailyNewsFeed extends Component {
                       </td>
                       <td>
                         <button
+                          id={intel.id}
                           class="addIntel"
                           onClick={() => {
                             this.togglePopupForm(intel);
@@ -129,37 +135,36 @@ class DailyNewsFeed extends Component {
                             this.setState({
                               intelClicked: intel
                             });
-                            this.togglePopupShow();
+                            this.togglePopupShow(intel);
                           }}
                         >
                           <i class="material-icons">zoom_in</i>
                         </button>
-
-                        {this.state.showPopupForm? (
-                          <PopupForm
-                            intelClicked={this.state.intelClicked}
-                            user={this.props.user}
-                            closePopup={() => {
-                              this.togglePopupForm(intel);
-                            }}
-                          />
-                        ) : null}
-
-                        {this.state.showPopupShow ? (
-                          <PopupShow
-                            intelClicked={this.state.intelClicked}
-                            user={this.props.user}
-                            closePopup={() => {
-                              this.togglePopupShow();
-                            }}
-                          />
-                        ) : null}
                       </td>
                     </tr>
                   </table>
                 </div>
               );
             })}
+            {this.state.showPopupForm ? (
+              <PopupForm
+                intelClicked={this.state.intelClicked}
+                user={this.props.user}
+                closePopup={() => {
+                  this.togglePopupForm(this.state.intelClicked);
+                }}
+              />
+            ) : null}
+
+            {this.state.showPopupShow ? (
+              <PopupShow
+                intelClicked={this.state.intelClicked}
+                user={this.props.user}
+                closePopup={() => {
+                  this.togglePopupShow(this.state.intelClicked);
+                }}
+              />
+            ) : null}
           </div>
         </body>
       </div>
