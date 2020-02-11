@@ -38,13 +38,15 @@ class IntelsController < ApplicationController
   # PATCH/PUT /intels/1
   # PATCH/PUT /intels/1.json
   def update
-    respond_to do |format|
+    # respond_to do |format|
       if @intel.update(intel_params)
-        format.html { redirect_to @intel, notice: 'Intel was successfully updated.' }
-        format.json { render :show, status: :ok, location: @intel }
+        render json: @intel
+        # format.html { redirect_to @intel, notice: 'Intel was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @intel }
       else
-        format.html { render :edit }
-        format.json { render json: @intel.errors, status: :unprocessable_entity }
+        render json: @intel.errors, status: :unprocessable_entity
+        # format.html { render :edit }
+        # format.json { render json: @intel.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -70,4 +72,4 @@ class IntelsController < ApplicationController
       #params.require(:intel).permit(:title)
       params.require(:intel).permit(:title, :content, :source, :tags, :company_id, :user_id, :category, :remarks, :date)
     end
-end
+

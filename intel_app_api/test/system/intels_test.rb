@@ -21,7 +21,7 @@ class IntelsTest < ApplicationSystemTestCase
     fill_in "Source", with: @intel.source
     fill_in "Tags", with: @intel.tags
     fill_in "Title", with: @intel.title
-    fill_in "Type", with: @intel.type
+    fill_in "Category", with: @intel.category
     fill_in "User", with: @intel.user_id
     click_on "Create Intel"
 
@@ -40,7 +40,7 @@ class IntelsTest < ApplicationSystemTestCase
     fill_in "Source", with: @intel.source
     fill_in "Tags", with: @intel.tags
     fill_in "Title", with: @intel.title
-    fill_in "Type", with: @intel.type
+    fill_in "Category", with: @intel.category
     fill_in "User", with: @intel.user_id
     click_on "Update Intel"
 

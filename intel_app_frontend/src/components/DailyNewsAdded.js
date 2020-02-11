@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import DailyNewsAddedForm from "./DailyNewsAddedForm.js";
 
 class DailyNewsAdded extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: this.props.user,
-      intels: []
+      edit: false,
+      intels: [],
+      intelClicked: "",
     };
   }
 
@@ -17,26 +20,12 @@ class DailyNewsAdded extends Component {
     this.getIntels();
   }
 
-  // handleUpdate = id => {
-  //   fetch(`http://localhost:3001/intels/${id}`, 
-  //   {
-  //     method: 'PUT',
-  //     body: JSON.stringify({intel: intel}),
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   }).then((response) => { 
-  //       this.updateIntel(intel)
-  //     })
-  // }
 
-  // updateIntel= intel =>{
-  //   let newIntels = this.state.intels.filter((element) => element.id !== intel.id)
-  //   newIntels.push(intel)
-  //   this.setState({
-  //     intels: newIntels
-  //   })
-  // }
+  handleEdit = () => {
+    this.setState({
+      edit: !this.state.edit
+    });
+  };
 
   handleDelete = id => {
     fetch(`http://localhost:3001/intels/${id}`, { method: "delete" }).then(
@@ -72,16 +61,22 @@ class DailyNewsAdded extends Component {
           <div class="added-content">
             {this.state.user
               ? this.state.intels
-                  .filter(intel => intel.user_id === this.state.user.id && intel.category === "public") 
+                  .filter(
+                    intel =>
+                      intel.user_id === this.state.user.id &&
+                      intel.category === "public"
+                  )
                   .map(intel => {
                     return (
                       <div class="news">
-                        <table id ="addednews">
+                        <table id="addednews">
                           <tr>
                             <td>{intel.title}</td>
                             <td>
-                              <button class="delete"
-                                onClick={() => this.handleDelete(intel.id)}>
+                              <button
+                                class="delete"
+                                onClick={() => this.handleDelete(intel.id)}
+                              >
                                 <i class="material-icons">delete</i>
                               </button>
                             </td>
@@ -93,8 +88,13 @@ class DailyNewsAdded extends Component {
                               </button>
                             </td>
                             <td>
-                              <button class="edit"
-                                // onClick={()=> this.handleEdit(intel.id)}
+                              <button
+                                class="edit"
+                                onClick={() => {
+                                  this.setState({
+                                    intelClicked: intel
+                                  });
+                                  this.handleEdit(intel)}}
                               >
                                 <i class="material-icons">edit</i>
                               </button>
@@ -105,6 +105,13 @@ class DailyNewsAdded extends Component {
                     );
                   })
               : null}
+            {this.state.edit ? 
+            <DailyNewsAddedForm 
+              intels= {this.state.intels}
+              intel={this.state.intelClicked}
+              user={this.props.user}
+            /> 
+            : null}
           </div>
         </body>
       </div>

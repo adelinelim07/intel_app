@@ -19,7 +19,7 @@ class SuggestedintelsTest < ApplicationSystemTestCase
     fill_in "Source", with: @suggestedintel.source
     fill_in "Tags", with: @suggestedintel.tags
     fill_in "Title", with: @suggestedintel.title
-    fill_in "Type", with: @suggestedintel.type
+    fill_in "Category", with: @suggestedintel.category
     fill_in "User", with: @suggestedintel.user_id
     click_on "Create Suggestedintel"
 
@@ -36,7 +36,7 @@ class SuggestedintelsTest < ApplicationSystemTestCase
     fill_in "Source", with: @suggestedintel.source
     fill_in "Tags", with: @suggestedintel.tags
     fill_in "Title", with: @suggestedintel.title
-    fill_in "Type", with: @suggestedintel.type
+    fill_in "Category", with: @suggestedintel.category
     fill_in "User", with: @suggestedintel.user_id
     click_on "Update Suggestedintel"
 
