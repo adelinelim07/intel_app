@@ -53,7 +53,7 @@ class App extends Component {
       isLoggedIn: false,
       user: {}
     });
-    Cookies.remove("user"); // removed!
+    // Cookies.remove("user"); // removed!
   };
 
   render() {

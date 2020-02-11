@@ -20,11 +20,34 @@ class DailyNewsAdded extends Component {
     this.getIntels();
   }
 
+<<<<<<< HEAD
   handleEdit = () => {
     this.setState({
       edit: !this.state.edit
     });
   };
+=======
+  // handleUpdate = id => {
+  //   fetch(`http://localhost:3001/intels/${id}`, 
+  //   {
+  //     method: 'PUT',
+  //     body: JSON.stringify({intel: intel}),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   }).then((response) => { 
+  //       this.updateIntel(intel)
+  //     })
+  // }
+
+  // updateIntel= intel =>{
+  //   let newIntels = this.state.intels.filter((element) => element.id !== intel.id)
+  //   newIntels.push(intel)
+  //   this.setState({
+  //     intels: newIntels
+  //   })
+  // }
+>>>>>>> 447ce5e21e0f5854e023d6c7c45b25708ee0f079
 
   handleDelete = id => {
     fetch(`http://localhost:3001/intels/${id}`, { method: "delete" }).then(
@@ -80,11 +103,14 @@ class DailyNewsAdded extends Component {
                               </button>
                             </td>
                             <td>
-                              <button class="show">
+                              <button class="show"
+                               onClick={()=> this.handleShow(intel.id)}
+                              >
                                 <i class="material-icons">zoom_in</i>
                               </button>
                             </td>
                             <td>
+<<<<<<< HEAD
                               <button
                                 class="edit"
                                 onClick={() => {
@@ -92,6 +118,10 @@ class DailyNewsAdded extends Component {
                                     intelClicked: intel
                                   });
                                   this.handleEdit(intel)}}
+=======
+                              <button class="edit"
+                                // onClick={()=> this.handleEdit(intel.id)}
+>>>>>>> 447ce5e21e0f5854e023d6c7c45b25708ee0f079
                               >
                                 <i class="material-icons">edit</i>
                               </button>

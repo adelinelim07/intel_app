@@ -69,8 +69,9 @@ class DailyNewsFeed extends Component {
     });
   };
 
-  togglePopupShow = () => {
+  togglePopupShow = (intel) => {
     this.setState({
+      intelClicked: intel,
       showPopupShow: !this.state.showPopupShow
     });
   };
@@ -115,6 +116,7 @@ class DailyNewsFeed extends Component {
                       </td>
                       <td>
                         <button
+                          id={intel.id}
                           class="addIntel"
                           onClick={() => {
                             this.togglePopupForm(intel);
@@ -133,7 +135,7 @@ class DailyNewsFeed extends Component {
                             this.setState({
                               intelClicked: intel
                             });
-                            this.togglePopupShow();
+                            this.togglePopupShow(intel);
                           }}
                         >
                           <i class="material-icons">zoom_in</i>
