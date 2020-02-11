@@ -125,7 +125,7 @@ class PopupForm extends Component {
               <input
                 type="text"
                 id="company_id"
-                value={this.state.formInputs.contact_id}
+                value={this.state.formInputs.company_id}
                 onChange={this.handleChange}
               />
               </div>
