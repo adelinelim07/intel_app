@@ -5,6 +5,7 @@ class DailyNewsFeed extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       showPopupForm: false,
       showPopupShow: false,
       suggestedintels: [],
@@ -38,7 +39,8 @@ class DailyNewsFeed extends Component {
 
         this.setState({
           suggestedintels,
-          filteredsuggestedintels
+          filteredsuggestedintels,
+          isLoading: false
         });
       })
       .catch(error => console.error(error));
@@ -91,7 +93,7 @@ class DailyNewsFeed extends Component {
           </form>
           <div class="dailynewsfeed-content">
             {this.state.filteredsuggestedintels.map(intel => {
-              return (
+              return (                
                 <div class="news">
                   <table id="newsfeed">
                     <tr>
@@ -120,6 +122,7 @@ class DailyNewsFeed extends Component {
                     </tr>
                   </table>
                 </div>
+
               );
             })}
             {this.state.showPopupForm ? (
@@ -131,7 +134,9 @@ class DailyNewsFeed extends Component {
                 }}
               />
             ) : null}
-
+             {this.state.isLoading ? 
+             <div class="loader-wrapper">     <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div> 
+             :  null}
           </div>
         </body>
       </div>
