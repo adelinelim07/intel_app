@@ -59,6 +59,7 @@ class PopupForm extends Component {
         });
       })
       .catch(error => console.log(error));
+    this.props.closePopup();
   };
 
   render() {
@@ -70,69 +71,82 @@ class PopupForm extends Component {
 
         <div className="popup">
           <div className="popup_inner">
-          <div class="form_wrapper">
-          <div class="form_container">
-            <form onSubmit={this.handleSubmit}>
-              <div class="row clearfix">
-                <label>Title</label>
-                <input
-                  type="text"
-                  id="title"
-                  value={this.state.formInputs.title}
-                  onChange={this.handleChange}
-                />
+            <div class="form_wrapper">
+              <div class="form_container">
+                <form onSubmit={this.handleSubmit}>
+                  <div class="row clearfix">
+                    <label>Title</label>
+                    <input
+                      type="text"
+                      id="title"
+                      value={this.state.formInputs.title}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div class="row clearfix">
+                    <label>Content</label>
+                    <textarea
+                      rows="10"
+                      cols="30"
+                      type="text"
+                      id="content"
+                      value={this.state.formInputs.content}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div class="row clearfix">
+                    <label>Source</label>
+                    <input
+                      type="text"
+                      id="source"
+                      value={this.state.formInputs.source}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div class="row clearfix">
+                    <label>Tags</label>
+                    <input
+                      type="text"
+                      id="tags"
+                      value={this.state.formInputs.tags}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div class="row clearfix">
+                    <label>Remarks</label>
+                    <input
+                      type="text"
+                      id="remarks"
+                      value={this.state.formInputs.remarks}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div class="row clearfix">
+                    <label>Date</label>
+                    <input
+                      type="date"
+                      id="date"
+                      value={this.state.formInputs.date}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div class="row clearfix">
+                    <label>Company</label>
+                    <input
+                      type="text"
+                      id="company_id"
+                      value={this.state.formInputs.company_id}
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  <div class="buttons-wrapper">
+                    <input type="submit" className="submit" />
+                    <button class="close" onClick={this.props.closePopup}>
+                      X
+                    </button>
+                  </div>
+                </form>
               </div>
-              <div class="row clearfix">
-                <label>Content</label>
-                <textarea rows="10" cols="30"
-                  type="text"
-                  id="content"
-                  value={this.state.formInputs.content}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div class="row clearfix">
-              <input
-                type="text"
-                id="source"
-                value={this.state.formInputs.source}
-                onChange={this.handleChange}
-              />
-              </div>
-              <div class="row clearfix">
-              <input
-                type="text"
-                id="tags"
-                value={this.state.formInputs.tags}
-                onChange={this.handleChange}
-              />
-              </div>
-              <div class="row clearfix">
-              <input
-                type="text"
-                id="remarks"
-                value={this.state.formInputs.remarks}
-                onChange={this.handleChange}
-              />
-              </div>
-              <div class="row clearfix">
-              <input
-                type="date"
-                id="date"
-                value={this.state.formInputs.date}
-                onChange={this.handleChange}
-              />
-              <input
-                type="text"
-                id="company_id"
-                value={this.state.formInputs.company_id}
-                onChange={this.handleChange}
-              />
-              </div>
-              <input type="submit" className="submit" />
-              <button class= "close" onClick={this.props.closePopup}>X</button>
-            </form>
-            </div>
             </div>
           </div>
         </div>
