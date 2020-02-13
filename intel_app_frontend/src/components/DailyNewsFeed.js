@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PopupForm from "./DailyNewsForm.js";
-import PopupShow from "./DailyNewsShow.js";
 
 class DailyNewsFeed extends Component {
   constructor(props) {
@@ -69,13 +68,6 @@ class DailyNewsFeed extends Component {
     });
   };
 
-  togglePopupShow = (intel) => {
-    this.setState({
-      intelClicked: intel,
-      showPopupShow: !this.state.showPopupShow
-    });
-  };
-
   render() {
     console.log(this.props.user);
     return (
@@ -103,13 +95,13 @@ class DailyNewsFeed extends Component {
                 <div class="news">
                   <table id="newsfeed">
                     <tr>
-                      <td rowspan="2">
+                      <td>
                         <img
                           src={intel.img}
                           onerror="this.src='https://png.pngtree.com/png-clipart/20190516/original/pngtree-newspaper-icon-png-image_3568621.jpg'"
                         />
                       </td>
-                      <td rowspan="2">
+                      <td>
                         <div class="newsTitle">{intel.title}</div>
                         {/* <p>{intel.description}</p>
                               <a href={intel.link}>link</a> */}
@@ -123,22 +115,6 @@ class DailyNewsFeed extends Component {
                           }}
                         >
                           <i class="material-icons">save</i>
-                        </button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <button
-                          class="show"
-                          onClick={() => {
-                            this.setState({
-                              intelClicked: intel
-                            });
-                            this.togglePopupShow(intel);
-                          }}
-                        >
-                          <i class="material-icons">zoom_in</i>
                         </button>
                       </td>
                     </tr>
@@ -156,15 +132,6 @@ class DailyNewsFeed extends Component {
               />
             ) : null}
 
-            {this.state.showPopupShow ? (
-              <PopupShow
-                intelClicked={this.state.intelClicked}
-                user={this.props.user}
-                closePopup={() => {
-                  this.togglePopupShow(this.state.intelClicked);
-                }}
-              />
-            ) : null}
           </div>
         </body>
       </div>

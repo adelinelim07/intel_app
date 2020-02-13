@@ -80,20 +80,13 @@ class DailyNewsAdded extends Component {
                               </button>
                             </td>
                             <td>
-                              <button class="show"
-                               onClick={()=> this.handleShow(intel.id)}
-                              >
-                                <i class="material-icons">zoom_in</i>
-                              </button>
-                            </td>
-                            <td>
                               <button
                                 class="edit"
                                 onClick={() => {
                                   this.setState({
                                     intelClicked: intel
                                   });
-                                  this.handleEdit(intel)}}
+                                  this.handleEdit()}}
                               >
                                 <i class="material-icons">edit</i>
                               </button>
@@ -109,6 +102,8 @@ class DailyNewsAdded extends Component {
               intels= {this.state.intels}
               intel={this.state.intelClicked}
               user={this.props.user}
+              edit={this.state.edit}
+              handleEdit={()=>{this.handleEdit()}}
             /> 
             : null}
           </div>

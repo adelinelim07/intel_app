@@ -95,7 +95,7 @@ class PopupForm extends Component {
                     />
                   </div>
                   <div class="row clearfix">
-                    <label>Source</label>
+                    <label>Source <a href= {this.props.intelClicked.link}>(link)</a></label>
                     <input
                       type="text"
                       id="source"
