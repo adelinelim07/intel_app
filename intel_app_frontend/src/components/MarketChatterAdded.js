@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import MarketChatterForm from "./MarketChatterForm.js";
-import MarketChatterAdded from "./MarketChatterAdded.js";
 
-class MarketChatter extends Component {
+class MarketChatterAdded extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,12 +18,6 @@ class MarketChatter extends Component {
       .catch(error => console.error(error));
   }
 
-  togglePopupForm = () => {
-    this.setState({
-      showPopupForm: !this.state.showPopupForm
-    });
-  };
-
   render() {
     return (
       <div>
@@ -37,20 +29,11 @@ class MarketChatter extends Component {
             href="../../css/MarketChatter.css"
           />
         </head>
-        <div class="main">
-          <div class="header">Market Chatter</div>
-          <div class="chatterform">
-          <MarketChatterForm
-            user={this.state.user}
-          />
-          </div>
-          <div class="chatteradded">
-          <MarketChatterAdded/>
-          </div>
-        </div>
+        <div class="chatteradded-subheader">Market Chatter Added</div>
+        <div class="chatteradded-content"></div>
       </div>
     );
   }
 }
 
-export default MarketChatter;
+export default MarketChatterAdded;
