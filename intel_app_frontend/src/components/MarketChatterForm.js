@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import Alert from "@material-ui/lab/Alert";
+import Button from "@material-ui/lab/AlertTitle";
 
 class MarketChatterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      showAlert: false,
       intels: [],
       formInputs: {
         title: "",
@@ -13,7 +16,7 @@ class MarketChatterForm extends Component {
         company_id: "",
         user_id: this.props.user.id,
         category: "private",
-        remarks: "",
+        remarks: [],
         date: ""
       }
     };
@@ -29,6 +32,10 @@ class MarketChatterForm extends Component {
       .then(json => this.setState({ intels: json }))
       .catch(error => console.error(error));
     console.log(this.state.intels);
+  }
+
+  toggleAlert(){
+    this.setState({showAlert: !this.state.showAlert})
   }
 
   handleChange = event => {
@@ -72,7 +79,7 @@ class MarketChatterForm extends Component {
         });
       })
       .catch(error => console.log(error));
-      alert("Submitted successfully!")
+      this.toggleAlert();
   };
 
   render() {
@@ -153,6 +160,9 @@ class MarketChatterForm extends Component {
             </div>
           </div>
         </div>
+        {this.state.showAlert ? 
+          (<Alert onClose={() => {this.toggleAlert()}}>Chatter successfully submitted!</Alert>)
+         : null}
       </div>
     );
   }

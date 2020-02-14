@@ -30,7 +30,6 @@ class MarketChatter extends Component {
     return (
       <div>
         <head>
-          <link rel="stylesheet" type="text/css" href="../../css/Popup.css" />
           <link
             rel="stylesheet"
             type="text/css"
@@ -45,7 +44,9 @@ class MarketChatter extends Component {
           />
           </div>
           <div class="chatteradded">
-          <MarketChatterAdded/>
+          <MarketChatterAdded
+            user={this.state.user}
+          />
           </div>
         </div>
       </div>

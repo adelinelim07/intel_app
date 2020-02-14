@@ -143,6 +143,13 @@ html {
   padding: 5px;
 }
 
+.addIntel:hover,
+.show:hover,
+.delete:hover,
+.edit:hover {
+  background-color: var(--darkorange)
+}
+
 .dailynewsadded {
   grid-area: added;
   max-width: 100%;
