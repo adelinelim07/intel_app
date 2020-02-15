@@ -159,11 +159,13 @@ open(url) do |rss|
     contentEncoded = item.content_encoded
     img = contentEncoded.split("src=")[1]
     img = img.split("alt")[0]
+    img = img.gsub(/"/, '')
+    #img.replace(/&quot;/g, '"')
     #category = item.category
     link = item.link   
     
-    #puts img
-    #puts ("***********************")
+    puts img
+    puts ("***********************")
 
     aviator_output.push( {
       :index => index,
@@ -179,6 +181,7 @@ open(url) do |rss|
   aviator_output
 end
 
+
 ########################################################################
 #newsfeed source 3: extract data from capa
 ########################################################################
@@ -186,6 +189,7 @@ def capa
   capa_output = []
   source = "CAPA"
   category = "public"
+  img = "https://seekvectorlogo.com/wp-content/uploads/2019/01/capa-centre-for-aviation-vector-logo.png"
   url = "https://centreforaviation.com/news"
   page = Nokogiri::HTML(open(url))
   
@@ -198,6 +202,7 @@ def capa
         :index => index,
         :title => title,
         :link => link,
+        :img => img,
         :source => source,
         :category => category
         })

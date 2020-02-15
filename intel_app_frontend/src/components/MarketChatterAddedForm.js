@@ -5,6 +5,7 @@ class MarketChatterAddedForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: this.props.user,
       showAlert: false,
       intels: [],
       intel: this.props.intel,
@@ -35,16 +36,16 @@ class MarketChatterAddedForm extends Component {
       .catch(error => console.error(error));
   }
 
-
   handleChange = event => {
-    this.setState({ [event.target.id] : event.target.value });
+    this.setState({ [event.target.id]: event.target.value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
+    let userAndComment = `${this.state.user.username}: ${this.state.comment}`
     this.setState({
       formInputs: {
-        comments: this.state.formInputs.comments.push(this.state.comment)
+        comments: this.state.formInputs.comments.push(userAndComment)
       }
     });
     console.log(this.state.formInputs);
@@ -53,30 +54,42 @@ class MarketChatterAddedForm extends Component {
       body: JSON.stringify(this.state.formInputs),
       headers: {
         "Content-Type": "application/json"
-      },
+      }
     }).then(response => {
       this.getIntels();
       console.log(response);
-      console.log(this.state.intels)
+      console.log(this.state.intels);
     });
     this.props.closePopup();
+  };
+
+  handleDelete = event => {
+    fetch(`http://localhost:3001/intels/${this.state.intel.id}`, {
+      method: "delete"
+    }).then(response => {
+      alert("Deleted");
+      this.getIntels();
+      this.props.closePopup();
+    });
   };
 
   render() {
     return (
       <div>
         <head>
-          <link rel="stylesheet" type="text/css" href="../../css/MarketChatter.css" />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="../../css/MarketChatter.css"
+          />
         </head>
         <div class="popup">
           <div class="popup_inner">
             <div class="form_wrapper">
               <div class="form_container">
                 <div>{this.state.intel.title}</div>
-                {this.state.intel.comments.map(comment=>{
-                    return(
-                        <div>{comment}</div>
-                    )
+                {this.state.intel.comments.map(comment => {
+                  return <div>{comment}</div>;
                 })}
                 <form onSubmit={this.handleSubmit}>
                   <label>Comment</label>
@@ -86,10 +99,18 @@ class MarketChatterAddedForm extends Component {
                     value={this.state.comment}
                     onChange={this.handleChange}
                   />
-                  <input type="submit" className="submit" />
-                  <button class="close"
-                   onClick={()=>this.props.closePopup()}
-                  >Close</button>
+                  <div class="buttons_wrapper">
+                    <input type="submit" className="submit" />
+                    <button
+                      class="close"
+                      onClick={() => this.props.closePopup()}
+                    >
+                      Close
+                    </button>
+                    <button class="delete" onClick={() => this.handleDelete()}>
+                      Delete
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>

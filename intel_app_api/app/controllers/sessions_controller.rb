@@ -4,6 +4,8 @@ class SessionsController < ApplicationController
         @user = User.find_by(username: session_params[:username])
       
         if @user && @user.authenticate(session_params[:password])
+          # created_jwt = issue_token({id: @user.id})
+          # cookies.signed[:jwt] = {value:  created_jwt, httponly: true}
           login!
           render json: {
             logged_in: true,
@@ -33,6 +35,7 @@ class SessionsController < ApplicationController
       end
     
       def destroy
+        # cookies.delete(:jwt)
         logout!
         render json: {
           status: 200,

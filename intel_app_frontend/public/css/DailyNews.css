@@ -121,8 +121,14 @@ html {
 }
 
 #newsfeed td:nth-child(1) {
-  width: 20%;
+  width: 100px;
 }
+
+img {
+  width: 90px;
+}
+
+
 #newsfeed td:nth-child(3) {
   width: 10%;
 }
@@ -162,6 +168,7 @@ html {
   table-layout: fixed;
   width: 100%;
 }
+
 
 #addednews td:nth-child(2),
 #addednews td:nth-child(3),

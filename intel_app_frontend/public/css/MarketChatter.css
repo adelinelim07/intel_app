@@ -148,7 +148,7 @@ html {
   padding: 5px;
 }
 
-.show-button:hover{
+.show-button:hover {
   background-color: var(--darkorange);
 }
 
@@ -245,10 +245,19 @@ textarea:focus {
   width: 100%;
 }
 
-.form_wrapper input[type="submit"], .close {
+/*/////////buttons //////////////////////?*/
+.buttons_wrapper {
+  padding: 10px;
+  position: relative;
+  margin: 10px;
+}
+
+.form_wrapper input[type="submit"],
+.close,
+.delete {
   background: var(--sunshineorange);
   /* height:50px; */
-  width: 40%;
+  width: 30%;
   border: none;
   outline: none;
   cursor: pointer;
@@ -259,17 +268,27 @@ textarea:focus {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   margin-top: 30px;
-  margin-left: -20px;
   border-radius: 20px;
   padding: 10px;
 }
 
-.form_wrapper input[type="submit"]:hover,
-.form_wrapper input[type="submit"]:focus,
-.close:hover, .close:focus {
-  background: var(--darkorange);
+.form_wrapper input[type="submit"] {
+  margin-left: -20px;
 }
 
+.close, .delete {
+  margin-left: 20px;
+}
+
+
+.form_wrapper input[type="submit"]:hover,
+.form_wrapper input[type="submit"]:focus,
+.close:hover,
+.close:focus,
+.delete:hover,
+.delete:hover {
+  background: var(--darkorange);
+}
 
 .popup {
   position: fixed;
