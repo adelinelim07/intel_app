@@ -44,39 +44,40 @@ class MarketChatterAddedForm extends Component {
     this.setState(updateInput);
   };
 
-
-  amendState=()=>{
-    let arr= this.state.formInputs.comments;
+  amendState = () => {
+    let arr = this.state.formInputs.comments;
     let userAndComment = `${this.state.user.username}: ${this.state.comment}`;
     arr.push(userAndComment);
     let totalUnread = this.state.formInputs.unread + 1;
-    this.setState({
-      formInputs: {
-        comments: arr,
-        unread: totalUnread,
+    this.setState(
+      {
+        formInputs: {
+          comments: arr,
+          unread: totalUnread
+        }
+      },
+      () => {
+        fetch(`http://localhost:3001/intels/${this.state.intel.id}`, {
+          method: "PUT",
+          body: JSON.stringify(this.state.formInputs),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }).then(response => {
+          this.getIntels();
+          console.log(response);
+          console.log(this.state.intels);
+          this.setState({
+            comment: ""
+          });
+        });
       }
-    })
-  }
+    );
+  };
 
   handleSubmit = event => {
     event.preventDefault();
     this.amendState();
-    console.log(this.state.formInputs);
-    fetch(`http://localhost:3001/intels/${this.state.intel.id}`, {
-      method: "PUT",
-      body: JSON.stringify(this.state.formInputs),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).then(response => {
-      this.getIntels();
-      console.log(response);
-      console.log(this.state.intels);
-      this.setState({
-        comment: "",
-      })
-    })
-    // this.props.closePopup();
   };
 
   handleDelete = event => {
@@ -114,10 +115,10 @@ class MarketChatterAddedForm extends Component {
                     value={this.state.comment}
                     onChange={this.handleChange}
                   />
-                    <button class="submit"
-                    onClick={()=>this.handleSubmit}
-                    >+</button>
-                    <div class="buttons_wrapper">
+                  <button class="submit" onClick={() => this.handleSubmit}>
+                    +
+                  </button>
+                  <div class="buttons_wrapper">
                     <button
                       class="close"
                       onClick={() => this.props.closePopup()}
