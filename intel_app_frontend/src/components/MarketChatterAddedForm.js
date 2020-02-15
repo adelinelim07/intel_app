@@ -8,6 +8,7 @@ class MarketChatterAddedForm extends Component {
       showAlert: false,
       intels: [],
       intel: this.props.intel,
+      unread: this.props.intel.unread,
       comment: "",
       formInputs: {
         title: this.props.intel.title,
@@ -43,15 +44,23 @@ class MarketChatterAddedForm extends Component {
     this.setState(updateInput);
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+
+  amendState=()=>{
+    let arr= this.state.formInputs.comments;
     let userAndComment = `${this.state.user.username}: ${this.state.comment}`;
+    arr.push(userAndComment);
+    let totalUnread = this.state.formInputs.unread + 1;
     this.setState({
       formInputs: {
-        // unread: this.state.formInputs.unread,
-        comments: this.state.formInputs.comments.push(userAndComment),
+        comments: arr,
+        unread: totalUnread,
       }
-    });
+    })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.amendState();
     console.log(this.state.formInputs);
     fetch(`http://localhost:3001/intels/${this.state.intel.id}`, {
       method: "PUT",
@@ -64,7 +73,7 @@ class MarketChatterAddedForm extends Component {
       console.log(response);
       console.log(this.state.intels);
       this.setState({
-        comment: ""
+        comment: "",
       })
     })
     // this.props.closePopup();
@@ -103,12 +112,6 @@ class MarketChatterAddedForm extends Component {
                     type="text"
                     id="comment"
                     value={this.state.comment}
-                    onChange={this.handleChange}
-                  />
-                  <input
-                    type="number"
-                    id="unread"
-                    value={this.state.formInputs.unread}
                     onChange={this.handleChange}
                   />
                     <button class="submit"
