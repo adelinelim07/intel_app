@@ -66,11 +66,10 @@ class MarketChatterAddedForm extends Component {
   handleDelete = event => {
     fetch(`http://localhost:3001/intels/${this.state.intel.id}`, {
       method: "delete"
-    }).then(response => {
-      alert("Deleted");
+    }).then(() => {
       this.getIntels();
-      this.props.closePopup();
     });
+    this.props.closePopup();
   };
 
   render() {
