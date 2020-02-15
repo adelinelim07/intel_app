@@ -1,32 +1,23 @@
 class ApplicationController < ActionController::Base
 
-    # include ::ActionController::Cookies
+  # def not_found
+  #   render json: { error: 'not_found' }
+  # end
 
-    # def authenticate_user
-    #   jwt = cookies.signed[:jwt]
-    #   decode_jwt(jwt)
-    # end
+  # def authorize_request
+  #   header = request.headers['Authorization']
+  #   header = header.split(' ').last if header
+  #   begin
+  #     @decoded = JsonWebToken.decode(header)
+  #     @current_user = User.find(@decoded[:user_id])
+  #   rescue ActiveRecord::RecordNotFound => e
+  #     render json: { errors: e.message }, status: :unauthorized
+  #   rescue JWT::DecodeError => e
+  #     render json: { errors: e.message }, status: :unauthorized
+  #   end
+  
 
-    # def issue_token payload
-    #   JWT.encode(payload, Rails.application.secrets.secret_key_base,
-    #   "HS256")
-    # end
-
-    # def decoded_token
-    #   if request.headers['Authorization']
-    #     begin
-    #       JWT.decode(request.headers['Authorization'],
-    #       Rails.application.secrets.secret_key_base, true, 
-    #       {algorithm: "HS256"})
-    #     rescue JWT::DecodeError
-    #        return [{}]
-    #     end
-    #    else
-    #      [{}]
-    #    end
-    # end
-
-    skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
     helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!
   

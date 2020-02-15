@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Alert from "@material-ui/lab/Alert";
 
 class MarketChatterAddedForm extends Component {
   constructor(props) {
@@ -20,7 +19,8 @@ class MarketChatterAddedForm extends Component {
         category: "private",
         remarks: this.props.intel.remarks,
         date: this.props.intel.date,
-        comments: this.props.intel.comments
+        comments: this.props.intel.comments,
+        unread: this.props.intel.unread
       }
     };
   }
@@ -37,15 +37,19 @@ class MarketChatterAddedForm extends Component {
   }
 
   handleChange = event => {
-    this.setState({ [event.target.id]: event.target.value });
+    const updateInput = Object.assign(this.state.formInputs, {
+      [event.target.id]: event.target.value
+    });
+    this.setState(updateInput);
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    let userAndComment = `${this.state.user.username}: ${this.state.comment}`
+    let userAndComment = `${this.state.user.username}: ${this.state.comment}`;
     this.setState({
       formInputs: {
-        comments: this.state.formInputs.comments.push(userAndComment)
+        // unread: this.state.formInputs.unread,
+        comments: this.state.formInputs.comments.push(userAndComment),
       }
     });
     console.log(this.state.formInputs);
@@ -59,8 +63,11 @@ class MarketChatterAddedForm extends Component {
       this.getIntels();
       console.log(response);
       console.log(this.state.intels);
-    });
-    this.props.closePopup();
+      this.setState({
+        comment: ""
+      })
+    })
+    // this.props.closePopup();
   };
 
   handleDelete = event => {
@@ -98,8 +105,16 @@ class MarketChatterAddedForm extends Component {
                     value={this.state.comment}
                     onChange={this.handleChange}
                   />
-                  <div class="buttons_wrapper">
-                    <input type="submit" className="submit" />
+                  <input
+                    type="number"
+                    id="unread"
+                    value={this.state.formInputs.unread}
+                    onChange={this.handleChange}
+                  />
+                    <button class="submit"
+                    onClick={()=>this.handleSubmit}
+                    >+</button>
+                    <div class="buttons_wrapper">
                     <button
                       class="close"
                       onClick={() => this.props.closePopup()}

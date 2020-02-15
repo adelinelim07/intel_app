@@ -14,7 +14,7 @@ class SideBarMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: this.props.user
+      user: JSON.parse(localStorage.getItem('user')),
     };
   }
 
@@ -104,7 +104,7 @@ class SideBarMenu extends Component {
                 {...props}
                 handleLogout={this.handleLogout}
                 loggedInStatus={this.props.isLoggedIn}
-                user={this.props.user}
+                user={this.state.user}
               />
             )}
           />

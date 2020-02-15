@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Cookies from 'js-cookie'
+// import {connect} from 'react-redux';
+// import {userPostFetch} from "/Action.js";
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      email: "",
       password: "",
       errors: ""
     };
@@ -25,23 +25,19 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { username, email, password } = this.state;
+    const { username, password } = this.state;
     let user = {
       username: username,
-      email: email,
       password: password
     };
-    console.log(user.username);
-    Cookies.set('user', user, { path: '' })
+    // this.props.userPostFetch(this.state);
 
     axios
       .post("http://localhost:3001/login", { user }, { withCredentials: true })
       .then(response => {
         if (response.data.logged_in) {
-          console.log("user", user.email)
           this.props.handleLogin(response.data);
-        //  this.props.history.push(`/user/${user.email}/dashboard/`);
-        this.props.history.push('/dashboard')
+          this.props.history.push('/dashboard')
         } else {
           this.setState({
             errors: response.data.errors
@@ -50,6 +46,8 @@ class Login extends Component {
       })
       .catch(error => console.log("api errors:", error));
   };
+
+
 
   handleErrors = () => {
     return (
@@ -64,7 +62,7 @@ class Login extends Component {
   };
 
   render() {
-    const { username, email, password } = this.state;
+    const { username, password } = this.state;
     return (
       <div>
         <head>
@@ -78,25 +76,7 @@ class Login extends Component {
             <div class="title_container">
               <h2>Log In</h2>
             </div>
-            <form onSubmit={this.handleSubmit}>
-              {/* <div class="row clearfix">
-                <div class="col_half">
-                  <label>Username</label>
-                  <div class="input_field">
-                    {" "}
-                    <span>
-                      <i aria-hidden="true" class="fa fa-user"></i>
-                    </span>
-                    <input
-                      placeholder="username"
-                      type="text"
-                      name="username"
-                      value={username}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                </div>
-              </div> */}
+            <form onSubmit={this.handleSubmit}>    
               <div class="row clearfix">
                 <div class="col_half">
                   <label>Username</label>
@@ -140,4 +120,12 @@ class Login extends Component {
     );
   }
 }
+
+
+// const mapDispatchToProps = dispatch => ({
+//   userPostFetch: userInfo => dispatch(userPostFetch(userInfo))
+// })
+
+// export default connect(null,mapDispatchToProps)(Login);
+
 export default Login;

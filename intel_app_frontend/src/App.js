@@ -5,10 +5,9 @@ import Home from "./components/Home";
 import Login from "./components/registrations/Login";
 import Signup from "./components/registrations/Signup";
 import Dashboard from "./components/Dashboard";
-import Cookies from "js-cookie";
+// import {connect} from 'react-redux';
+// import {getProfileFetch} from "./components/Action.js";
 
-// import DailyNews from "./components/DailyNews";
-// import Intels from "./components/Intels";
 
 class App extends Component {
   constructor(props) {
@@ -42,10 +41,9 @@ class App extends Component {
         isLoggedIn: true,
         user: data.user
       }
-      // function() {
-      //   Cookies.set('user', this.state.user, { path: '' })
-      // }
     );
+    localStorage.setItem('user',JSON.stringify(data.user));
+    console.log((localStorage.user));
   };
 
   handleLogout = () => {
@@ -53,7 +51,6 @@ class App extends Component {
       isLoggedIn: false,
       user: {}
     });
-    // Cookies.remove("user"); // removed!
   };
 
   render() {
@@ -125,4 +122,9 @@ class App extends Component {
     );
   }
 }
+
+// const mapDispatchToProps = dispatch => ({
+//   getProfileFetch: () => dispatch(getProfileFetch())
+// })
+
 export default App;

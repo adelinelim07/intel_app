@@ -1,15 +1,18 @@
 class SessionsController < ApplicationController
-    
+  # before_action :authorize_request, except: :login
+
     def create
         @user = User.find_by(username: session_params[:username])
       
         if @user && @user.authenticate(session_params[:password])
-          # created_jwt = issue_token({id: @user.id})
-          # cookies.signed[:jwt] = {value:  created_jwt, httponly: true}
           login!
+          # token = JsonWebToken.encode(user_id: @user.id)
+          # time = Time.now + 24.hours.to_i
           render json: {
+            # token: token, 
+            # exp: time.strftime("%m-%d-%Y %H:%M"),
             logged_in: true,
-            user: @user
+            user: @user,
           }
         else
           render json: { 
@@ -35,7 +38,6 @@ class SessionsController < ApplicationController
       end
     
       def destroy
-        # cookies.delete(:jwt)
         logout!
         render json: {
           status: 200,

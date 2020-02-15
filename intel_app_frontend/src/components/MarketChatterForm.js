@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Alert from "@material-ui/lab/Alert";
-import Button from "@material-ui/lab/AlertTitle";
 
 class MarketChatterForm extends Component {
   constructor(props) {
@@ -17,7 +16,8 @@ class MarketChatterForm extends Component {
         user_id: this.props.user.id,
         category: "private",
         remarks: [],
-        date: ""
+        date: "",
+        unread: 0,
       }
     };
   }
@@ -73,7 +73,8 @@ class MarketChatterForm extends Component {
             user_id: this.props.user.id,
             category: "private",
             remarks: "",
-            date: ""
+            date: "",
+            unread: 0,
           },
           intels: [jsonedIntel, ...this.state.intels]
         });

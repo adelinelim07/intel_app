@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import SideBarMenu from "./SideMenuBar.js";
-import Cookies from "js-cookie";
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: this.props.user
+      user: JSON.parse(localStorage.getItem('user'))
     };
   }
 
   render() {
+    console.log(this.state.user)
     return (
       <div>
         <head>
@@ -19,7 +19,7 @@ class Dashboard extends Component {
         <body>
           <div class="grid">
             <SideBarMenu
-              user={this.props.user}
+              user={this.state.user}
               handleLogout={this.props.handleLogout}
             />
           </div>

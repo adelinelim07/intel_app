@@ -22,11 +22,11 @@ class DailyNewsAddedForm extends Component {
     };
   }
 
-  handleChange = event => {
-    const updateInput = Object.assign(this.state.formInputs, {
-      [event.target.id]: event.target.value
-    });
-  };
+  // handleChange = event => {
+  //   const updateInput = Object.assign(this.state.formInputs, {
+  //     [event.target.id]: event.target.value
+  //   });
+  // };
 
   handleUpdate = event => {
     event.preventDefault();

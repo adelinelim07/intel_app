@@ -1,5 +1,2 @@
-if Rails.env === 'production' 
-    Rails.application.config.session_store :cookie_store, key: '_IntelAppApi', domain: 'http://localhost:3001'
-  else
-    Rails.application.config.session_store :cookie_store, key: '_IntelAppApi' 
-  end
+
+Rails.application.config.session_store :cookie_store, key: '_IntelAppApi', domain: 'http://localhost:3000'

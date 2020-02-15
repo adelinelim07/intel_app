@@ -2,14 +2,12 @@ import React, { Component } from "react";
 import DailyNewsFeed from "./DailyNewsFeed.js";
 import DailyNewsTop5 from "./DailyNewsTop5.js";
 import DailyNewsAdded from "./DailyNewsAdded.js";
-import SideBarMenu from "./SideMenuBar.js"
-import Cookies from 'js-cookie'
 
 class DailyNews extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: this.props.user,
+      user: JSON.parse(localStorage.getItem('user')),
       intels: [],
     };
   }
@@ -27,7 +25,7 @@ class DailyNews extends Component {
   }
 
   render() {
-    console.log(this.props.user);
+    console.log(this.state.user);
     return (
       <div>
         <head>
@@ -41,11 +39,11 @@ class DailyNews extends Component {
           <div class="main">
             <div class="header">Daily News</div>
             <div class="dailynewsfeed">
-              <DailyNewsFeed user={this.props.user} />
+              <DailyNewsFeed user={this.state.user} />
             </div>
             <div class="dailynewsadded">
               <DailyNewsAdded
-                user={this.props.user}
+                user={this.state.user}
                 intels={this.state.intels}
               />
             </div>

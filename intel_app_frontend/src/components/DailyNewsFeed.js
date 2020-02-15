@@ -71,7 +71,6 @@ class DailyNewsFeed extends Component {
   };
 
   render() {
-    console.log(this.props.user);
     return (
       <div>
         <head>
@@ -99,8 +98,7 @@ class DailyNewsFeed extends Component {
                     <tr>
                       <td>
                         <img
-                          src={intel.img}
-                          onerror="this.src='https://png.pngtree.com/png-clipart/20190516/original/pngtree-newspaper-icon-png-image_3568621.jpg'"
+                          src={intel.img} alt="not loading"
                         />
                       </td>
                       <td>

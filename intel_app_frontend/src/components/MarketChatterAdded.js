@@ -20,6 +20,7 @@ class MarketChatterAdded extends Component {
     this.getIntels();
   }
 
+
   getIntels() {
     fetch("http://localhost:3001/intels")
       .then(response => response.json())
@@ -54,7 +55,7 @@ class MarketChatterAdded extends Component {
           {this.state.intels
             .filter(
               intel =>
-                intel.user_id === this.state.user.id &&
+                // intel.user_id === this.state.user.id &&
                 intel.category === "private"
             )
             .map(intel => {
@@ -64,7 +65,7 @@ class MarketChatterAdded extends Component {
                     <tr>
                       <td class="title">{intel.title}</td>
                       <td class="badge">
-                      <Badge badgeContent={intel.id} color="error"></Badge>
+                      <Badge badgeContent={intel.unread} color="error"></Badge>
                       </td>
                       <td class="show">
                         <button class="show-button"
@@ -84,6 +85,8 @@ class MarketChatterAdded extends Component {
         <MarketChatterAddedForm
         intel= {this.state.intelClicked}
         user= {this.state.user}
+        unreadCount = {this.state.unreadCount}
+        addUnreadCount = {()=>this.addUnreadCount()}
         closePopup={()=>this.toggleShowEdit(this.state.intelClicked)}
         />: null
         }
