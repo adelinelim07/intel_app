@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Alert from "@material-ui/lab/Alert";
+import TagsInput from "./TagInput.js"
 
 class MarketChatterForm extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class MarketChatterForm extends Component {
     this.state = {
       showAlert: false,
       intels: [],
+      tags: [],
       formInputs: {
         title: "",
         content: "",
@@ -35,6 +37,7 @@ class MarketChatterForm extends Component {
   toggleAlert(){
     this.setState({showAlert: !this.state.showAlert})
   }
+
 
   handleChange = event => {
     const updateInput = Object.assign(this.state.formInputs, {
@@ -118,12 +121,16 @@ class MarketChatterForm extends Component {
                 </div>
                 <div class="row clearfix">
                   <label>Tags</label>
-                  <input
+                  <TagsInput
+                    items={this.state.tags}
+                  />
+                  {/* <input
                     type="text"
                     id="tags"
                     value={this.state.formInputs.tags}
                     onChange={this.handleChange}
-                  />
+                  /> */}
+
                 </div>
                 <div class="row clearfix">
                   <label>Remarks</label>

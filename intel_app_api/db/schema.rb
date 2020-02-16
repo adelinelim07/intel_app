@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_16_054434) do
+ActiveRecord::Schema.define(version: 2020_02_16_061447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 2020_02_16_054434) do
     t.string "title"
     t.string "content"
     t.string "source"
-    t.string "tags"
     t.bigint "user_id", null: false
     t.string "category"
     t.string "remarks"
@@ -57,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_02_16_054434) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "comments", default: [], array: true
     t.integer "readby", default: [], array: true
+    t.string "tags", default: [], array: true
     t.index ["user_id"], name: "index_intels_on_user_id"
   end
 

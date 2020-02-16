@@ -56,10 +56,6 @@ class SideBarMenu extends Component {
                 Home
               </li>
               <li class="navList__heading">
-              <Link to="/contacts"> Contacts </Link>
-              </li>
-
-              <li class="navList__heading">
                 Intels
               </li>
               <li>
