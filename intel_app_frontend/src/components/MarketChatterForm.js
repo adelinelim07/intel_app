@@ -143,15 +143,6 @@ class MarketChatterForm extends Component {
                     onChange={this.handleChange}
                   />
                 </div>
-                <div class="row clearfix">
-                  <label>Company</label>
-                  {/* <input
-                    type="text"
-                    id="company_id"
-                    value={this.state.formInputs.company_id}
-                    onChange={this.handleChange}
-                  /> */}
-                </div>
                 <input type="submit" className="submit" />
               </form>
             </div>

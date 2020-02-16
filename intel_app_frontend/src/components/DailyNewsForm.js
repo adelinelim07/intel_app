@@ -128,15 +128,6 @@ class PopupForm extends Component {
                       onChange={this.handleChange}
                     />
                   </div>
-                  <div class="row clearfix">
-                    <label>Company</label>
-                    {/* <input
-                      type="text"
-                      id="company_id"
-                      value={this.state.formInputs.company_id}
-                      onChange={this.handleChange}
-                    /> */}
-                  </div>
                   <div class="buttons-wrapper">
                     <input type="submit" className="submit" />
                     <button class="close" onClick={this.props.closePopup}>
