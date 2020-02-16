@@ -16,9 +16,9 @@ class MarketChatterAdded extends Component {
     this.getIntels();
   }
 
-  componentDidUpdate() {
-    this.getIntels();
-  }
+  // componentDidUpdate() {
+  //   this.getIntels();
+  // }
 
 
   getIntels() {
