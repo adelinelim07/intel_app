@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_111914) do
+ActiveRecord::Schema.define(version: 2020_02_16_054434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 2020_02_15_111914) do
     t.index ["company_id"], name: "index_contacts_on_company_id"
   end
 
+  create_table "intelcompanies", force: :cascade do |t|
+    t.bigint "intel_id", null: false
+    t.bigint "company_id", null: false
+    t.integer "qty"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_intelcompanies_on_company_id"
+    t.index ["intel_id"], name: "index_intelcompanies_on_intel_id"
+  end
+
   create_table "intels", force: :cascade do |t|
     t.string "title"
     t.string "content"
@@ -45,10 +55,8 @@ ActiveRecord::Schema.define(version: 2020_02_15_111914) do
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "company_id"
     t.text "comments", default: [], array: true
-    t.integer "unread"
-    t.index ["company_id"], name: "index_intels_on_company_id"
+    t.integer "readby", default: [], array: true
     t.index ["user_id"], name: "index_intels_on_user_id"
   end
 
@@ -71,10 +79,12 @@ ActiveRecord::Schema.define(version: 2020_02_15_111914) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "unreadCount"
   end
 
   add_foreign_key "contacts", "companies"
-  add_foreign_key "intels", "companies"
+  add_foreign_key "intelcompanies", "companies"
+  add_foreign_key "intelcompanies", "intels"
   add_foreign_key "intels", "users"
   add_foreign_key "suggestedintels", "users"
 end

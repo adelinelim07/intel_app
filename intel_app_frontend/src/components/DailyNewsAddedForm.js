@@ -13,7 +13,6 @@ class DailyNewsAddedForm extends Component {
         content: this.props.intel.content,
         source: this.props.intel.source,
         tags: this.props.intel.tags,
-        company_id: this.props.intel.company_id,
         user_id: this.props.user.id,
         category: this.props.intel.category,
         remarks: this.props.intel.remarks,
@@ -22,11 +21,12 @@ class DailyNewsAddedForm extends Component {
     };
   }
 
-  // handleChange = event => {
-  //   const updateInput = Object.assign(this.state.formInputs, {
-  //     [event.target.id]: event.target.value
-  //   });
-  // };
+  handleChange = event => {
+    const updateInput = Object.assign(this.state.formInputs, {
+      [event.target.id]: event.target.value
+    });
+    this.setState(updateInput);
+  };
 
   handleUpdate = event => {
     event.preventDefault();
@@ -121,12 +121,12 @@ class DailyNewsAddedForm extends Component {
                   </div>
                   <div class="row clearfix">
                     <label>Company</label>
-                    <input
+                    {/* <input
                       type="text"
                       id="company_id"
                       value={this.state.formInputs.company_id}
                       onChange={this.handleChange}
-                    />
+                    /> */}
                   </div>
                   <div class="buttons-wrapper">
                     <input type="submit" className="submit" />

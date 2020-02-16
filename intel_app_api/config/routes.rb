@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :intel_companies
   resources :companies
   resources :suggestedintels
   resources :intels

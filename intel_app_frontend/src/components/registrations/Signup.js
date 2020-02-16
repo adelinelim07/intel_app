@@ -9,6 +9,7 @@ class Signup extends Component {
       email: "",
       password: "",
       password_confirmation: "",
+      unreadCount: 0,
       errors: "",
     };
   }
@@ -21,12 +22,13 @@ class Signup extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    const { username, email, password, password_confirmation } = this.state;
+    const { username, email, unreadCount, password, password_confirmation } = this.state;
     let user = {
       username: username,
       email: email,
       password: password,
-      password_confirmation: password_confirmation
+      password_confirmation: password_confirmation,
+      unreadCount: unreadCount,
     };
     axios
       .post("http://localhost:3001/users", { user }, { withCredentials: true })
@@ -58,7 +60,7 @@ class Signup extends Component {
     );
   };
   render() {
-    const { username, email, password, password_confirmation } = this.state;
+    const { username, unreadCount, email, password, password_confirmation } = this.state;
     return (
       <div>
         <head>

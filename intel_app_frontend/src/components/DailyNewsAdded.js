@@ -5,7 +5,7 @@ class DailyNewsAdded extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: this.props.user,
+      user: "",
       edit: false,
       intels: [],
       intelClicked: "",
@@ -13,6 +13,9 @@ class DailyNewsAdded extends Component {
   }
 
   componentDidMount() {
+    this.setState({
+      user: JSON.parse(localStorage.getItem('user'))
+    })
     this.getIntels();
   }
 
@@ -44,7 +47,7 @@ class DailyNewsAdded extends Component {
   }
 
   render() {
-    // console.log(this.state.user);
+    console.log(this.state.user);
 
     return (
       <div>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Intel:</strong>
+  <%= @intel_company.intel_id %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @intel_company.company_id %>
+</p>
+
+<p>
+  <strong>Qty:</strong>
+  <%= @intel_company.qty %>
+</p>
+
+<%= link_to 'Edit', edit_intel_company_path(@intel_company) %> |
+<%= link_to 'Back', intel_companies_path %>

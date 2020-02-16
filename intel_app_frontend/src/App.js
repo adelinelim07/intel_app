@@ -43,7 +43,6 @@ class App extends Component {
       }
     );
     localStorage.setItem('user',JSON.stringify(data.user));
-    console.log((localStorage.user));
   };
 
   handleLogout = () => {

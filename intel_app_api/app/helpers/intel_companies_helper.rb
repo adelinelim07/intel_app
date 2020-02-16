@@ -1,0 +1,2 @@
+module IntelCompaniesHelper
+end

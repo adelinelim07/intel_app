@@ -7,16 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Company.create(
-    name: "Singapore Airlines",
-    business: "Airline",
-    address: "Changi Airport",
+    name: "ST Aero",
+    business: "MRO",
+    address: "PayaLebar",
 )
 
-
-Contact.create(
-    name: "Goh",
-    position: "CEO",
-    email: "goh@sia.com.sg",
-    number: 659125,
-    company_id: 1
+Company.create(
+    name: "Airbus",
+    business: "OEM",
+    address: "Toulouse",
 )
+

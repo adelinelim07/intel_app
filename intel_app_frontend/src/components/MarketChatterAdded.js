@@ -65,7 +65,7 @@ class MarketChatterAdded extends Component {
                     <tr>
                       <td class="title">{intel.title}</td>
                       <td class="badge">
-                      {intel.unread} comments
+                      {intel.comments.length} comments
                       </td>
                       <td class="show">
                         <button class="show-button"

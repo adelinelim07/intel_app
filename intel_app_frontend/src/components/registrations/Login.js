@@ -12,9 +12,9 @@ class Login extends Component {
       errors: ""
     };
   }
-  componentWillMount() {
-    return this.props.loggedInStatus ? this.redirect() : null;
-  }
+  // componentDidMount() {
+  //   return this.props.loggedInStatus ? this.redirect() : null;
+  // }
 
   handleChange = event => {
     const { name, value } = event.target;

@@ -7,12 +7,15 @@ class DailyNews extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: JSON.parse(localStorage.getItem('user')),
+      user: this.props.user,
       intels: [],
     };
   }
 
   componentDidMount() {
+    this.setState({
+      user: JSON.parse(localStorage.getItem('user'))
+    })
     this.getIntels();
   }
 

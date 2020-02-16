@@ -8,20 +8,17 @@ class MarketChatterAddedForm extends Component {
       showAlert: false,
       intels: [],
       intel: this.props.intel,
-      unread: this.props.intel.unread,
       comment: "",
       formInputs: {
         title: this.props.intel.title,
         content: this.props.intel.content,
         source: this.props.intel.source,
         tags: this.props.intel.tags,
-        company_id: this.props.intel.company_id,
         user_id: this.props.user.id,
         category: "private",
         remarks: this.props.intel.remarks,
         date: this.props.intel.date,
         comments: this.props.intel.comments,
-        unread: this.props.intel.unread
       }
     };
   }
@@ -48,12 +45,12 @@ class MarketChatterAddedForm extends Component {
     let arr = this.state.formInputs.comments;
     let userAndComment = `${this.state.user.username}: ${this.state.comment}`;
     arr.push(userAndComment);
-    let totalUnread = this.state.formInputs.unread + 1;
+    // let totalUnread = this.state.formInputs.unread + 1;
     this.setState(
       {
         formInputs: {
           comments: arr,
-          unread: totalUnread
+          // unread: totalUnread
         }
       },
       () => {

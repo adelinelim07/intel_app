@@ -5,8 +5,14 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: JSON.parse(localStorage.getItem('user'))
+      user: this.props.user
     };
+  }
+
+  componentDidMount=()=>{
+    this.setState({
+      user: JSON.parse(localStorage.getItem('user'))
+    })
   }
 
   render() {

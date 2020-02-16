@@ -1,0 +1,32 @@
+<%= form_with(model: intel_company, local: true) do |form| %>
+  <% if intel_company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(intel_company.errors.count, "error") %> prohibited this intel_company from being saved:</h2>
+
+      <ul>
+        <% intel_company.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :intel_id %>
+    <%= form.text_field :intel_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :company_id %>
+    <%= form.text_field :company_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :qty %>
+    <%= form.number_field :qty %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

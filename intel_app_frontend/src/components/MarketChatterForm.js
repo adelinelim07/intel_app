@@ -12,12 +12,10 @@ class MarketChatterForm extends Component {
         content: "",
         source: "",
         tags: [],
-        company_id: "",
         user_id: this.props.user.id,
         category: "private",
         remarks: [],
         date: "",
-        unread: 0,
       }
     };
   }
@@ -69,12 +67,10 @@ class MarketChatterForm extends Component {
             content: "",
             source: "",
             tags: [],
-            company_id: "",
             user_id: this.props.user.id,
             category: "private",
             remarks: "",
             date: "",
-            unread: 0,
           },
           intels: [jsonedIntel, ...this.state.intels]
         });
@@ -149,12 +145,12 @@ class MarketChatterForm extends Component {
                 </div>
                 <div class="row clearfix">
                   <label>Company</label>
-                  <input
+                  {/* <input
                     type="text"
                     id="company_id"
                     value={this.state.formInputs.company_id}
                     onChange={this.handleChange}
-                  />
+                  /> */}
                 </div>
                 <input type="submit" className="submit" />
               </form>

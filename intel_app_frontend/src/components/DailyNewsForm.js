@@ -9,7 +9,6 @@ class PopupForm extends Component {
         content: this.props.intelClicked.description || "",
         source: this.props.intelClicked.source || "",
         tags: "",
-        company_id: "",
         user_id: this.props.user.id,
         category: this.props.intelClicked.category,
         remarks: "",
@@ -49,7 +48,6 @@ class PopupForm extends Component {
             content: this.props.intelClicked.description || "",
             source: this.props.intelClicked.source || "",
             tags: [],
-            company_id: "",
             user_id: this.props.user.id,
             category: this.props.intelClicked.category,
             remarks: "",
@@ -132,12 +130,12 @@ class PopupForm extends Component {
                   </div>
                   <div class="row clearfix">
                     <label>Company</label>
-                    <input
+                    {/* <input
                       type="text"
                       id="company_id"
                       value={this.state.formInputs.company_id}
                       onChange={this.handleChange}
-                    />
+                    /> */}
                   </div>
                   <div class="buttons-wrapper">
                     <input type="submit" className="submit" />
