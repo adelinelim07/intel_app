@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Unica+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Poiret+One|Pompiere&display=swap");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap");
+
+/* icons ref: https://material.io/resources/icons/?style=baseline */
+/* grid ref: http://grid.malven.co/ */
+/* https://coolors.co/041725-1b374b-3d232c-c39c93-d6c9ba */
+/* https://coolors.co/ffffff-74b0bc-ccc5b9-d5cedd-326273 */
+
+:root {
+  --white: #ffffff;
+  --black: #0b0c10;
+  --navy: #394263;
+  --darkorange: #fc4a1a;
+  --sunshineorange: #f78733;
+  --dullpink: #c38d9e;
+  --darkteal: #41b3a3;
+  --lightteal: #85dcba;
+  --lightgrey: rgb(217, 222, 223);
+  --shellbg: white;
+}
+
+html {
+  background: var(--white);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 500px;
+}
+
+* {
+  font-family: "Fira Sans", sans-serif;
+}
+
+.main {
+  background-color: var(--lightgrey);
+  height: 100vh;
+  position: relative;
+  display: grid;
+  grid-template-columns: 10px 96% 20px;
+  grid-template-rows: 50px 90% 10px;
+  grid-template-areas:
+    "header header header"
+    ". box ."
+    ". . .";
+  overflow: hidden;
+  grid-gap: 15px;
+}
+
+.header {
+  grid-area: header;
+  font-size: 4.5vh;
+  background-color: var(--navy);
+  color: var(--white);
+  text-align: center;
+  /* padding: 0 0 0 25px ; */
+  font-weight: 700;
+}
+
+.words {
+  margin-right: 20px
+}
+
+.container {
+  grid-area: box;
+  max-width: 100%;
+  max-height: 90vh;
+  background-color: var(--shellbg);
+  border: solid var(--lightgrey);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.unreadIntel, .readIntel {
+  margin: 10px;
+  border: solid var(--white);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.unreadIntel {
+  background-color:  rgba(233, 179, 33, 0.2);
+  
+}
+
+.readIntel {
+  background-color:  rgba(78, 206, 174, 0.2);
+}
+
+#eachIntel {
+  table-layout: fixed;
+  width: 100%;
+}
+
+#eachIntel td:nth-child(1) {
+  width: 100px;
+}
+
+#eachIntel td:nth-child(3) {
+  width: 20px;
+}
+
+.unreadIntel #title {
+    font-size: 2vh;
+    font-weight: 800;
+}
+
+.unreadIntel #content {
+    font-size: 1vh
+}
+
+.readIntel #title {
+  font-size: 2vh
+}
+
+.readIntel #content {
+  font-size: 1vh
+}
+

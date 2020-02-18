@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Badge from "@material-ui/core/Badge";
 import MarketChatterAddedForm from "./MarketChatterAddedForm.js";
 
 class MarketChatterAdded extends Component {
@@ -16,9 +15,9 @@ class MarketChatterAdded extends Component {
     this.getIntels();
   }
 
-  // componentDidUpdate() {
-  //   this.getIntels();
-  // }
+  componentDidUpdate() {
+    this.getIntels();
+  }
 
 
   getIntels() {
@@ -55,7 +54,7 @@ class MarketChatterAdded extends Component {
           {this.state.intels
             .filter(
               intel =>
-                // intel.user_id === this.state.user.id &&
+                //intel.user_id === this.state.user.id &&
                 intel.category === "private"
             )
             .map(intel => {

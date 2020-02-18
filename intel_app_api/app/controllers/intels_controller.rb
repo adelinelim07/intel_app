@@ -67,7 +67,7 @@ class IntelsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def intel_params
       #params.require(:intel).permit(:title)
-      params.require(:intel).permit(:title, :content, :source, :user_id, :category, :remarks, :date, :comments=>[], :tags=>[])
+      params.require(:intel).permit(:title, :content, :source, :user_id, :category, :remarks, :date, :comments=>[], :tags=>[], :readby=>[])
     end
   end
 

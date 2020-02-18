@@ -7,7 +7,7 @@ class DailyNewsAdded extends Component {
     this.state = {
       user: "",
       edit: false,
-      intels: [],
+      intels: this.props.intels,
       intelClicked: "",
     };
   }
@@ -19,8 +19,11 @@ class DailyNewsAdded extends Component {
     this.getIntels();
   }
 
-  componentDidUpdate() {
-    this.getIntels();
+  componentDidUpdate=(prevProps,prevState)=>{
+    if(this.state.intels !== prevState.intels){
+      console.log("intels state has changed")
+      this.getIntels();
+     }
   }
 
   handleEdit = () => {

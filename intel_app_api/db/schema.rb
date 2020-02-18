@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_16_061447) do
+ActiveRecord::Schema.define(version: 2020_02_18_034321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,13 +73,20 @@ ActiveRecord::Schema.define(version: 2020_02_16_061447) do
     t.index ["user_id"], name: "index_suggestedintels_on_user_id"
   end
 
+  create_table "user_trackers", force: :cascade do |t|
+    t.integer "unreadCount"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_trackers_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "unreadCount"
   end
 
   add_foreign_key "contacts", "companies"
@@ -87,4 +94,5 @@ ActiveRecord::Schema.define(version: 2020_02_16_061447) do
   add_foreign_key "intelcompanies", "intels"
   add_foreign_key "intels", "users"
   add_foreign_key "suggestedintels", "users"
+  add_foreign_key "user_trackers", "users"
 end

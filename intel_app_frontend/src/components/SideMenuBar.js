@@ -8,15 +8,20 @@ import {
 import axios from "axios";
 import MarketChatter from "./MarketChatter.js";
 import DailyNews from "./DailyNews.js";
-import Contacts from "./Contacts.js"
+import Intels from "./Intels.js";
+
 
 class SideBarMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: JSON.parse(localStorage.getItem('user')),
+      user: JSON.parse(localStorage.getItem("user")),
+      userTracker: [],
+      unreadCount: 0
     };
   }
+
+  
 
   handleLogout = () => {
     axios
@@ -32,11 +37,7 @@ class SideBarMenu extends Component {
     return (
       <Router>
         <head>
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/css/Dashboard.css"
-          />
+          <link rel="stylesheet" type="text/css" href="/css/Dashboard.css" />
         </head>
 
         <aside class="sidenav">
@@ -48,21 +49,20 @@ class SideBarMenu extends Component {
           </div>
           <div class="sidenav__profile">
             <div class="sidenav__profile-avatar"></div>
-            <div class="sidenav__profile-title text-light">{this.state.user.username}</div>
+            <div class="sidenav__profile-title text-light">
+              {this.state.user.username}
+            </div>
           </div>
           <div class="row row--align-v-center row--align-h-center">
             <ul class="navList">
+              <li class="navList__heading">Home</li>
               <li class="navList__heading">
-                Home
-              </li>
-              <li class="navList__heading">
-                Intels
+                <Link to="intels">Intels</Link>
+                
               </li>
               <li>
                 <div class="navList__subheading row row--align-v-center">
-                  <span class="navList__subheading-icon">
-                    
-                  </span>
+                  <span class="navList__subheading-icon"></span>
                   <span class="navList__subheading-title">
                     <Link to="dailynews"> Daily News </Link>
                   </span>
@@ -70,22 +70,17 @@ class SideBarMenu extends Component {
               </li>
               <li>
                 <div class="navList__subheading row row--align-v-center">
-                  <span class="navList__subheading-icon">
-                    
-                  </span>
+                  <span class="navList__subheading-icon"></span>
                   <span class="navList__subheading-title">
                     <Link to="/marketchatter"> Market Chatter </Link>
                   </span>
                 </div>
               </li>
-              <li class="navList__heading">
-                Analysis
-              </li>
+              <li class="navList__heading">Analysis</li>
               <li class="navList__heading">
                 <Link to="/logout" onClick={this.handleLogout}>
                   Log Out
                 </Link>
-                
               </li>
             </ul>
           </div>
@@ -118,9 +113,9 @@ class SideBarMenu extends Component {
           />
           <Route
             exact
-            path="/contacts"
+            path="/intels"
             render={props => (
-              <Contacts
+              <Intels
                 {...props}
                 handleLogout={this.handleLogout}
                 loggedInStatus={this.state.isLoggedIn}

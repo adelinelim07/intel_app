@@ -9,9 +9,17 @@ class Signup extends Component {
       email: "",
       password: "",
       password_confirmation: "",
-      unreadCount: 0,
       errors: "",
+      intels: [],
+      userTracker: {
+        user_id: "",
+        unreadCount: 0
+      }
     };
+  }
+
+  componentDidMount=()=>{
+    this.getIntels()
   }
 
   handleChange = event => {
@@ -20,22 +28,58 @@ class Signup extends Component {
       [name]: value
     });
   };
+
+  handleUserTracker = id => {
+    this.setState(
+      {
+        userTracker: {
+          user_id: id,
+          unreadCount: this.state.intels.length
+        }
+      },
+      () => {
+        fetch("http://localhost:3001/user_trackers", {
+          body: JSON.stringify(this.state.userTracker),
+          method: "POST",
+          headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+          }
+        })
+          .then(createdTracker => {
+            console.log(createdTracker);
+            return createdTracker.json();
+          })
+          .catch(error => console.log(error));
+      }
+    );
+  };
+  
+  getIntels() {
+    fetch("http://localhost:3001/intels")
+      .then(response => response.json())
+      .then(json => this.setState({ intels: json }))
+      .catch(error => console.error(error));
+  }
+
+
   handleSubmit = event => {
     event.preventDefault();
-    const { username, email, unreadCount, password, password_confirmation } = this.state;
+    const { username, email, password, password_confirmation } = this.state;
     let user = {
       username: username,
       email: email,
       password: password,
-      password_confirmation: password_confirmation,
-      unreadCount: unreadCount,
+      password_confirmation: password_confirmation
     };
     axios
       .post("http://localhost:3001/users", { user }, { withCredentials: true })
       .then(response => {
         if (response.data.status === "created") {
-          alert('Successfully registered!')
+          alert("Successfully registered!");
+          console.log(response.data);
           // this.props.handleLogin(response.data);
+          this.handleUserTracker(response.data.user.id);
           this.redirect();
         } else {
           this.setState({
@@ -59,8 +103,9 @@ class Signup extends Component {
       </div>
     );
   };
+
   render() {
-    const { username, unreadCount, email, password, password_confirmation } = this.state;
+    const { username, email, password, password_confirmation } = this.state;
     return (
       <div>
         <head>
@@ -81,7 +126,7 @@ class Signup extends Component {
                   <div class="input_field">
                     {" "}
                     <span>
-                    <i class="material-icons">person</i>
+                      <i class="material-icons">person</i>
                     </span>
                     <input
                       placeholder="username"

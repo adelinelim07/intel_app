@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!
   
     def login!
-      session[:user_id] = @user.id
+      session[:username] = @user.username
     end
   
     def logged_in?
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     end
   
     def current_user
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+      @current_user ||= User.find(session[:username]) if session[:username]
     end
   
     def authorized_user?

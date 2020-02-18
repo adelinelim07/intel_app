@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Trackers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Unreadcount</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_trackers.each do |user_tracker| %>
+      <tr>
+        <td><%= user_tracker.unreadCount %></td>
+        <td><%= user_tracker.user_id %></td>
+        <td><%= link_to 'Show', user_tracker %></td>
+        <td><%= link_to 'Edit', edit_user_tracker_path(user_tracker) %></td>
+        <td><%= link_to 'Destroy', user_tracker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Tracker', new_user_tracker_path %>

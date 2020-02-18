@@ -1,32 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, useRef } from "react";
 import Alert from "@material-ui/lab/Alert";
 
 class MarketChatterForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      showAlert: false,
-      intels: [],
-      /* for tags*/
-      focused: false,
-      input: "",
-      /* for rest of forms*/
-      formInputs: {
-        title: "",
-        content: "",
-        source: "",
-        tags: [],
-        user_id: this.props.user.id,
-        category: "private",
-        remarks: [],
-        date: ""
-      },
-      /*for user tracker*/
-      userTracker: {
-        user_id: this.props.user.id,
-        unreadCount: 0,
-      }
-    };
+    this.form = React.createRef();
   }
 
   componentDidMount() {
@@ -44,15 +22,9 @@ class MarketChatterForm extends Component {
     this.setState({ showAlert: !this.state.showAlert });
   }
 
-  handleChange = event => {
-    const updateInput = Object.assign(this.state.formInputs, {
-      [event.target.id]: event.target.value
-    });
-    this.setState(updateInput)
-    console.log(updateInput)
-  };
 
-  submitIntel=()=> {
+  handleSubmit = event => {
+    event.preventDefault();
     fetch("http://localhost:3001/intels", {
       body: JSON.stringify(this.state.formInputs),
       method: "POST",
@@ -84,12 +56,8 @@ class MarketChatterForm extends Component {
       });
     })
     .catch(error => console.log(error));
-  }
-
-  handleSubmit = event => {
-    event.preventDefault();
-    this.submitIntel();
     this.toggleAlert();
+
   }
   
 
@@ -130,8 +98,6 @@ class MarketChatterForm extends Component {
                   <input
                     type="text"
                     id="title"
-                    value={this.state.formInputs.title}
-                    onChange={this.handleChange}
                   />
                 </div>
                 <div class="row clearfix">
@@ -141,8 +107,6 @@ class MarketChatterForm extends Component {
                     cols="30"
                     type="text"
                     id="content"
-                    value={this.state.formInputs.content}
-                    onChange={this.handleChange}
                   />
                 </div>
                 <div class="row clearfix">
@@ -150,8 +114,6 @@ class MarketChatterForm extends Component {
                   <input
                     type="text"
                     id="source"
-                    value={this.state.formInputs.source}
-                    onChange={this.handleChange}
                   />
                 </div>
                 <div class="row clearfix">

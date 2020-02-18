@@ -187,18 +187,7 @@ button {
   text-decoration: none;
 }
 
-.navList__heading:after {
-  position: absolute;
-  content: "";
-  height: 6px;
-  width: 6px;
-  top: 17px;
-  right: 25px;
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  transform: rotate(225deg);
-  transition: all 0.2s;
-}
+
 .navList__heading:hover, .navList__subheading:hover {
   background-color: #303753;
   cursor: pointer;
