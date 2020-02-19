@@ -48,6 +48,8 @@
     ]
   },
   "devDependencies": {
-    "sass": "^1.25.0"
+    "css-loader": "^3.4.2",
+    "sass": "^1.25.0",
+    "style-loader": "^1.1.3"
   }
 }

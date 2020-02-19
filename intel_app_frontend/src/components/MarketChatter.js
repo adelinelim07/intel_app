@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MarketChatterForm from "./MarketChatterForm.js";
 import MarketChatterAdded from "./MarketChatterAdded.js";
+import Dashboard from "./Dashboard";
 
 class MarketChatter extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class MarketChatter extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <head>
           <link
             rel="stylesheet"
@@ -36,20 +37,19 @@ class MarketChatter extends Component {
             href="../../css/MarketChatter.css"
           />
         </head>
-        <div class="main">
-          <div class="header">Market Chatter</div>
-          <div class="chatterform">
-          <MarketChatterForm
-            user={this.state.user}
-          />
-          </div>
-          <div class="chatteradded">
-          <MarketChatterAdded
-            user={this.state.user}
-          />
+        <div class="linedashboard">
+          <Dashboard />
+          <div class="main">
+            <div class="header">Market Chatter</div>
+            <div class="chatterform">
+              <MarketChatterForm user={this.state.user} />
+            </div>
+            <div class="chatteradded">
+              <MarketChatterAdded user={this.state.user} />
+            </div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

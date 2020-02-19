@@ -7,6 +7,9 @@ import Signup from "./components/registrations/Signup";
 import Dashboard from "./components/Dashboard";
 // import {connect} from 'react-redux';
 // import {getProfileFetch} from "./components/Action.js";
+import MarketChatter from "./components/MarketChatter.js";
+import DailyNews from "./components/DailyNews.js";
+import Intels from "./components/Intels.js";
 
 
 class App extends Component {
@@ -115,6 +118,54 @@ class App extends Component {
                 />
               )}
             />
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <Home
+                  {...props}
+                  handleLogout={this.handleLogout}
+                  loggedInStatus={this.state.isLoggedIn}
+                  user={this.state.user}
+                />
+              )}
+            />
+                      <Route
+            path="/dailynews"
+            //path="/user/:username/dashboard/dailynews"
+            render={props => (
+              <DailyNews
+                {...props}
+                handleLogout={this.handleLogout}
+                loggedInStatus={this.props.isLoggedIn}
+                user={this.state.user}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/marketchatter"
+            render={props => (
+              <MarketChatter
+                {...props}
+                handleLogout={this.handleLogout}
+                loggedInStatus={this.state.isLoggedIn}
+                user={this.state.user}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/intels"
+            render={props => (
+              <Intels
+                {...props}
+                handleLogout={this.handleLogout}
+                loggedInStatus={this.state.isLoggedIn}
+                user={this.state.user}
+              />
+            )}
+          />
           </Switch>
         </BrowserRouter>
       </div>

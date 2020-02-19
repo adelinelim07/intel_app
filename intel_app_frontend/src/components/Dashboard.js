@@ -22,14 +22,12 @@ class Dashboard extends Component {
         <head>
           <link rel="stylesheet" type="text/css" href="/css/Dashboard.css" />
         </head>
-        <body>
           <div class="grid">
             <SideBarMenu
               user={this.state.user}
               handleLogout={this.props.handleLogout}
             />
           </div>
-        </body>
       </div>
     );
   }

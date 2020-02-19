@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  withRouter
+  // BrowserRouter as Router,
+  // Route,
+  // withRouter,
+  Link
 } from "react-router-dom";
 import axios from "axios";
-import MarketChatter from "./MarketChatter.js";
-import DailyNews from "./DailyNews.js";
-import Intels from "./Intels.js";
+// import MarketChatter from "./MarketChatter.js";
+// import DailyNews from "./DailyNews.js";
+// import Intels from "./Intels.js";
 
 
 class SideBarMenu extends Component {
@@ -27,19 +27,15 @@ class SideBarMenu extends Component {
     axios
       .delete("http://localhost:3001/logout", { withCredentials: true })
       .then(response => {
+        this.context.history.push("/");
         this.props.handleLogout();
-        this.props.history.push("/");
+        
       })
       .catch(error => console.log(error));
   };
 
   render() {
     return (
-      <Router>
-        <head>
-          <link rel="stylesheet" type="text/css" href="/css/Dashboard.css" />
-        </head>
-
         <aside class="sidenav">
           <div class="sidenav__brand">
             <div class="logo">
@@ -85,48 +81,9 @@ class SideBarMenu extends Component {
             </ul>
           </div>
         </aside>
-
-        <div class="content">
-          <Route
-            path="/dailynews"
-            //path="/user/:username/dashboard/dailynews"
-            render={props => (
-              <DailyNews
-                {...props}
-                handleLogout={this.handleLogout}
-                loggedInStatus={this.props.isLoggedIn}
-                user={this.state.user}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/marketchatter"
-            render={props => (
-              <MarketChatter
-                {...props}
-                handleLogout={this.handleLogout}
-                loggedInStatus={this.state.isLoggedIn}
-                user={this.state.user}
-              />
-            )}
-          />
-          <Route
-            exact
-            path="/intels"
-            render={props => (
-              <Intels
-                {...props}
-                handleLogout={this.handleLogout}
-                loggedInStatus={this.state.isLoggedIn}
-                user={this.state.user}
-              />
-            )}
-          />
-        </div>
-      </Router>
     );
   }
 }
 
-export default withRouter(SideBarMenu);
+// export default withRouter(SideBarMenu);
+export default SideBarMenu;

@@ -62,6 +62,12 @@ button {
   overflow-y: hidden;
 }
 
+.body {
+  grid-area: main;
+}
+
+
+
 /* //////////////// Side nav CSS ///////////////// */
 
 

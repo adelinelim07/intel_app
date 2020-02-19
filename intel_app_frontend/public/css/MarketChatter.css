@@ -35,12 +35,16 @@ html {
   font-family: "Fira Sans", sans-serif;
 }
 
+.linedashboard {
+  display:flex; flex-direction:row;
+}
+
 .main {
   background-color: var(--lightgrey);
   height: 100vh;
   position: relative;
   display: grid;
-  grid-template-columns: 10px 47.5% 47.5% 20px;
+  grid-template-columns: 10px 50% 50% 20px;
   grid-template-rows: 50px 25px 85% 10px;
   grid-template-areas:
     "header header header header"

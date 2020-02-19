@@ -2,20 +2,21 @@ import React, { Component } from "react";
 import DailyNewsFeed from "./DailyNewsFeed.js";
 import DailyNewsTop5 from "./DailyNewsTop5.js";
 import DailyNewsAdded from "./DailyNewsAdded.js";
+import Dashboard from "./Dashboard";
 
 class DailyNews extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: this.props.user,
-      intels: [],
+      intels: []
     };
   }
 
   componentDidMount() {
     this.setState({
-      user: JSON.parse(localStorage.getItem('user'))
-    })
+      user: JSON.parse(localStorage.getItem("user"))
+    });
     this.getIntels();
   }
 
@@ -29,15 +30,12 @@ class DailyNews extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <head>
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/css/DailyNews.css"
-          />
+          <link rel="stylesheet" type="text/css" href="/css/DailyNews.css" />
         </head>
-        <body>
+        <div class="linedashboard">
+          <Dashboard />
           <div class="main">
             <div class="header">Daily News</div>
             <div class="dailynewsfeed">
@@ -53,8 +51,8 @@ class DailyNews extends Component {
               <DailyNewsTop5 />
             </div>
           </div>
-        </body>
-      </div>
+        </div>
+      </React.Fragment>
     );
   }
 }
