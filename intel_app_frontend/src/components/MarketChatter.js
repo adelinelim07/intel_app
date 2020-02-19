@@ -12,8 +12,15 @@ class MarketChatter extends Component {
     };
   }
   componentDidMount() {
+    this.setState({
+      user: JSON.parse(localStorage.getItem("user"))
+    },()=>{
+      console.log(this.state.user)
+    });
+  
     this.getIntels();
   }
+
   getIntels() {
     fetch("http://localhost:3001/intels")
       .then(response => response.json())
