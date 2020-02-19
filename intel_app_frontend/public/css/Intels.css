@@ -35,6 +35,10 @@ html {
   font-family: "Fira Sans", sans-serif;
 }
 
+.linedashboard {
+  display:flex; flex-direction:row;
+}
+
 .main {
   background-color: var(--lightgrey);
   height: 100vh;
