@@ -8,7 +8,7 @@ class PopupForm extends Component {
         title: this.props.intelClicked.title || "",
         content: this.props.intelClicked.description || "",
         source: this.props.intelClicked.source || "",
-        tags: "",
+        tags: [],
         user_id: this.props.user.id,
         category: this.props.intelClicked.category,
         remarks: "",
@@ -27,7 +27,16 @@ class PopupForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     fetch("http://localhost:3001/intels", {
-      body: JSON.stringify(this.state.formInputs),
+      body: JSON.stringify({
+        title: this.state.formInputs.title,
+        content: this.state.formInputs.content,
+        source: this.state.formInputs.source,
+        tags: this.state.formInputs.tags,
+        user_id: this.props.user.id,
+        category: "public",
+        remarks: this.state.formInputs.remarks,
+        date: this.state.formInputs.date 
+      }),
       method: "POST",
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -106,6 +115,7 @@ class PopupForm extends Component {
                     <input
                       type="text"
                       id="tags"
+                      placeholder="Comma delimited"
                       value={this.state.formInputs.tags}
                       onChange={this.handleChange}
                     />

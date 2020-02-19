@@ -12,6 +12,9 @@ class MarketChatterAdded extends Component {
     };
   }
   componentDidMount() {
+    this.setState({
+      user: JSON.parse(localStorage.getItem("user"))
+    });
     this.getIntels();
   }
 

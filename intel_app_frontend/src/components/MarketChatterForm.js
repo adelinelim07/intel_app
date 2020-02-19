@@ -7,9 +7,6 @@ class MarketChatterForm extends Component {
     this.state = {
       showAlert: false,
       intels: [],
-      /* for tags*/
-      focused: false,
-      input: "",
       /* for rest of forms*/
       formInputs: {
         title: "",
@@ -18,18 +15,16 @@ class MarketChatterForm extends Component {
         tags: [],
         user_id: this.props.user.id,
         category: "private",
-        remarks: [],
+        remarks: "",
         date: ""
-      },
-      /*for user tracker*/
-      userTracker: {
-        user_id: this.props.user.id,
-        unreadCount: 0,
       }
     };
   }
 
   componentDidMount() {
+    this.setState({
+      user: JSON.parse(localStorage.getItem("user"))
+    });
     this.getIntels();
   }
 
@@ -48,76 +43,61 @@ class MarketChatterForm extends Component {
     const updateInput = Object.assign(this.state.formInputs, {
       [event.target.id]: event.target.value
     });
-    this.setState(updateInput)
-    console.log(updateInput)
+    this.setState(updateInput);
+    console.log(updateInput);
   };
 
-  submitIntel=()=> {
+  submitIntel = () => {
+    console.log(this.state.formInputs);
     fetch("http://localhost:3001/intels", {
-      body: JSON.stringify(this.state.formInputs),
+      body: JSON.stringify({
+        title: this.state.formInputs.title,
+        content: this.state.formInputs.content,
+        source: this.state.formInputs.source,
+        tags: this.state.formInputs.tags.split(",").map(s=>s.trim()),
+        user_id: this.props.user.id,
+        category: "private",
+        remarks: this.state.formInputs.remarks,
+        date: this.state.formInputs.date 
+      }),
       method: "POST",
       headers: {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json"
       }
     })
-    .then(createdIntel => {
-      console.log(createdIntel);
-      return createdIntel.json();
-    })
-    .then(jsonedIntel => {
-      console.log(jsonedIntel);
-          //reset form
-          //add to intel
-      this.setState({
-        formInputs: {
-          title: "",
-          content: "",
-          source: "",
-          tags: [],
-          user_id: this.props.user.id,
-          category: "private",
-          remarks: "",
-          date: ""
-        },
-        intels: [jsonedIntel, ...this.state.intels]
-      });
-    })
-    .catch(error => console.log(error));
-  }
+      .then(createdIntel => {
+        console.log(createdIntel);
+        return createdIntel.json();
+      })
+      .then(jsonedIntel => {
+        console.log(jsonedIntel);
+        //reset form
+        //add to intel
+        this.setState({
+          formInputs: {
+            title: "",
+            content: "",
+            source: "",
+            tags: [],
+            user_id: this.props.user.id,
+            category: "private",
+            remarks: "",
+            date: ""
+          },
+          intels: [jsonedIntel, ...this.state.intels]
+        });
+      })
+      .catch(error => console.log(error));
+  };
 
   handleSubmit = event => {
     event.preventDefault();
     this.submitIntel();
     this.toggleAlert();
-  }
-  
+  };
 
   render() {
-    const styles = {
-      container: {
-        border: "1px solid #ddd",
-        padding: "5px",
-        borderRadius: "5px"
-      },
-
-      items: {
-        display: "inline-block",
-        padding: "2px",
-        border: "1px solid blue",
-        fontFamily: "Helvetica, sans-serif",
-        borderRadius: "5px",
-        marginRight: "5px",
-        cursor: "pointer"
-      },
-
-      input: {
-        outline: "none",
-        border: "none",
-        fontSize: "14px",
-        fontFamily: "Helvetica, sans-serif"
-      }
-    };
     return (
       <div>
         <div class="chatterform-subheader">Input Form</div>
@@ -156,34 +136,13 @@ class MarketChatterForm extends Component {
                 </div>
                 <div class="row clearfix">
                   <label>Tags</label>
-                  <label>
-                    {console.log(this.state.formInputs.tags)}
-                    <ul style={styles.container}>
-                      {this.state.formInputs.tags.map((item, i) => (
-                        <li
-                          key={i}
-                          style={styles.items}
-                          onClick={this.handleRemoveItem(i)}
-                        >
-                          {item}
-                          <span>(x)</span>
-                        </li>
-                      ))}
-                      <input
-                        style={styles.input}
-                        value={this.state.input}
-                        onChange={this.handleInputChange}
-                        onKeyDown={this.handleInputKeyDown}
-                        placeholder="Arrowright to enter"
-                      />
-                    </ul>
-                  </label>
-                  {/* <input
+                  <input
                     type="text"
+                    placeholder="Comma delimited"
                     id="tags"
                     value={this.state.formInputs.tags}
                     onChange={this.handleChange}
-                  /> */}
+                  />
                 </div>
                 <div class="row clearfix">
                   <label>Remarks</label>
@@ -203,20 +162,6 @@ class MarketChatterForm extends Component {
                     onChange={this.handleChange}
                   />
                 </div>
-
-                  <input
-                    type="text"
-                    id="user_id"
-                    value={this.state.formInputs.user_id}
-                    onChange={this.handleChange}
-                  />
-                  <input
-                    type="text"
-                    id="category"
-                    value={this.state.formInputs.category}
-                    onChange={this.handleChange}
-                  />
-
                 <input type="submit" className="submit" />
               </form>
             </div>
@@ -234,46 +179,6 @@ class MarketChatterForm extends Component {
       </div>
     );
   }
-  handleInputChange = evt => {
-    this.setState({
-      input: evt.target.value
-    });
-  };
-
-  handleInputKeyDown = evt => {
-    if (evt.keyCode === 39) {
-      const { value } = evt.target;
-
-      this.setState(state => ({
-        formInputs: {
-          tags: [...state.formInputs.tags, value],
-        },
-        input: ""
-      }));
-    }
-
-    if (
-      this.state.formInputs.tags.length &&
-      evt.keyCode === 8 &&
-      !this.state.input.length
-    ) {
-      this.setState(state => ({
-        formInputs: {
-          tags: state.formInputs.tags.slice(0, state.formInputs.tags.length - 1)
-        }
-      }));
-    }
-  };
-
-  handleRemoveItem = index => {
-    return () => {
-      this.setState(state => ({
-        formInputs:{
-          tags: state.formInputs.tags.filter((item, i) => i !== index)
-        }
-      }));
-    };
-  };
 }
 
 export default MarketChatterForm;
