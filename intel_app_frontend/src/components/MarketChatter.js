@@ -12,11 +12,11 @@ class MarketChatter extends Component {
     };
   }
   componentDidMount() {
-    this.setState({
-      user: JSON.parse(localStorage.getItem("user"))
-    },()=>{
-      console.log(this.state.user)
-    });
+    // this.setState({
+    //   user: JSON.parse(localStorage.getItem("user"))
+    // },()=>{
+    //   console.log(this.state.user)
+    // });
   
     this.getIntels();
   }
