@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
+  
   resources :user_trackers
   resources :intel_companies
   resources :companies
