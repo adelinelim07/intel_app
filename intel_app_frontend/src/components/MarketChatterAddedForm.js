@@ -18,7 +18,7 @@ class MarketChatterAddedForm extends Component {
         category: "private",
         remarks: this.props.intel.remarks,
         date: this.props.intel.date,
-        comments: this.props.intel.comments,
+        comments: this.props.intel.comments
       }
     };
   }
@@ -49,7 +49,7 @@ class MarketChatterAddedForm extends Component {
     this.setState(
       {
         formInputs: {
-          comments: arr,
+          comments: arr
           // unread: totalUnread
         }
       },
@@ -87,6 +87,17 @@ class MarketChatterAddedForm extends Component {
   };
 
   render() {
+    const styles = {
+      tags: {
+        display: "inline-block",
+        padding: "2px",
+        fontFamily: "Helvetica, sans-serif",
+        color: "white",
+        borderRadius: "5px",
+        marginRight: "5px",
+        background: "#394263",
+      },
+    };
     return (
       <div>
         <head>
@@ -100,21 +111,30 @@ class MarketChatterAddedForm extends Component {
           <div class="popup_inner">
             <div class="form_wrapper">
               <div class="form_container">
-                <div>{this.state.intel.title}</div>
+                <div class="showTitle">{this.state.intel.title}</div>
+                <div class="showContent">{this.state.intel.content}</div>
+                <div class="showTags">
+                  {this.state.intel.tags.map((tag, i) => (
+                    <li style={styles.tags}>{tag}</li>
+                  ))}
+                </div>
+
+                <div class="showComments">Comments </div>
                 {this.state.intel.comments.map(comment => {
                   return <div>{comment}</div>;
                 })}
                 <form onSubmit={this.handleSubmit}>
-                  <label>Comment</label>
-                  <input
-                    type="text"
-                    id="comment"
-                    value={this.state.comment}
-                    onChange={this.handleChange}
-                  />
-                  <button class="submit" onClick={() => this.handleSubmit}>
-                    +
-                  </button>
+                  <div class="inputCommentsRow">
+                    <input
+                      type="text"
+                      id="comment"
+                      value={this.state.comment}
+                      onChange={this.handleChange}
+                    />
+                    <button class="submit" onClick={() => this.handleSubmit}>
+                      +
+                    </button>
+                  </div>
                   <div class="buttons_wrapper">
                     <button
                       class="close"

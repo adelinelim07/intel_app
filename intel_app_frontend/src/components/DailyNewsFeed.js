@@ -36,7 +36,6 @@ class DailyNewsFeed extends Component {
         const filteredsuggestedintels = suggestedintels.filter(element => {
           return element.title.toLowerCase().includes(query.toLowerCase());
         });
-
         this.setState({
           suggestedintels,
           filteredsuggestedintels,
@@ -69,6 +68,7 @@ class DailyNewsFeed extends Component {
       showPopupForm: !this.state.showPopupForm
     });
   };
+  
 
   render() {
     return (

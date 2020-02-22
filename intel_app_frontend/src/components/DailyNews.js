@@ -39,7 +39,8 @@ class DailyNews extends Component {
           <div class="main">
             <div class="header">Daily News</div>
             <div class="dailynewsfeed">
-              <DailyNewsFeed user={this.state.user} />
+              <DailyNewsFeed 
+              user={this.state.user} />
             </div>
             <div class="dailynewsadded">
               <DailyNewsAdded

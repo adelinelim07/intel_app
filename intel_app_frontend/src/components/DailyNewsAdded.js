@@ -8,23 +8,24 @@ class DailyNewsAdded extends Component {
       user: "",
       edit: false,
       intels: this.props.intels,
-      intelClicked: "",
+      intelClicked: ""
     };
   }
 
   componentDidMount() {
     this.setState({
-      user: JSON.parse(localStorage.getItem('user'))
-    })
+      user: JSON.parse(localStorage.getItem("user"))
+    });
     this.getIntels();
   }
 
-  componentDidUpdate=(prevProps,prevState)=>{
-    if(this.state.intels !== prevState.intels){
-      console.log("intels state has changed")
+  componentDidUpdate = (prevProps, prevState) => {
+    if (this.state.intels.length !== prevProps.intels.Length) {
+      console.log("intels state has changed");
       this.getIntels();
-     }
-  }
+    }
+  };
+
 
   handleEdit = () => {
     this.setState({
@@ -33,12 +34,12 @@ class DailyNewsAdded extends Component {
   };
 
   handleDelete = id => {
-    fetch(`http://localhost:3001/intels/${id}`, { method: "delete" }).then(
-      response => {
-        alert("Deleted");
-        this.getIntels();
-      }
-    );
+    fetch(`http://localhost:3001/intels/${id}`, {
+      method: "delete"
+    }).then(response => {
+      alert("Deleted");
+      this.getIntels();
+    });
   };
 
   getIntels() {
@@ -92,7 +93,8 @@ class DailyNewsAdded extends Component {
                                   this.setState({
                                     intelClicked: intel
                                   });
-                                  this.handleEdit()}}
+                                  this.handleEdit();
+                                }}
                               >
                                 <i class="material-icons">edit</i>
                               </button>
@@ -103,15 +105,17 @@ class DailyNewsAdded extends Component {
                     );
                   })
               : null}
-            {this.state.edit ? 
-            <DailyNewsAddedForm 
-              intels= {this.state.intels}
-              intel={this.state.intelClicked}
-              user={this.props.user}
-              edit={this.state.edit}
-              handleEdit={()=>{this.handleEdit()}}
-            /> 
-            : null}
+            {this.state.edit ? (
+              <DailyNewsAddedForm
+                intels={this.state.intels}
+                intel={this.state.intelClicked}
+                user={this.props.user}
+                edit={this.state.edit}
+                handleEdit={() => {
+                  this.handleEdit();
+                }}
+              />
+            ) : null}
           </div>
         </body>
       </div>

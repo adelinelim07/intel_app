@@ -51,7 +51,8 @@ class SideBarMenu extends Component {
           </div>
           <div class="row row--align-v-center row--align-h-center">
             <ul class="navList">
-              <li class="navList__heading">Home</li>
+              <li class="navList__heading">
+                <Link to="home">Home</Link></li>
               <li class="navList__heading">
                 <Link to="intels">Intels</Link>
                 
@@ -72,7 +73,6 @@ class SideBarMenu extends Component {
                   </span>
                 </div>
               </li>
-              <li class="navList__heading">Analysis</li>
               <li class="navList__heading">
                 <Link to="/logout" onClick={this.handleLogout}>
                   Log Out

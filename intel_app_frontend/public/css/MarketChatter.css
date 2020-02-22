@@ -158,6 +158,23 @@ html {
   background-color: var(--darkorange);
 }
 
+.inputCommentsRow {
+  display:flex; flex-direction:row;
+}
+
+.showTitle{
+  font-weight: 800;
+  font-size: 25px;
+}
+
+.showContent{
+  font-size: 20px;
+}
+
+.showComments{
+  margin-top: 15px;
+}
+
 /*////////form /////////*/
 .form_wrapper {
   background: rgba(255, 255, 255, 0.9);

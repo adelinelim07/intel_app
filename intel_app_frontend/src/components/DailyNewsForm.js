@@ -63,6 +63,9 @@ class PopupForm extends Component {
             date: ""
           },
           intels: [jsonedIntel, ...this.state.intels]
+        }, () => {
+          console.log("helloooo", document.getElementById("intelSubmit").id)
+          document.getElementById("intelSubmit").id = "intelAlreadySubmit";
         });
       })
       .catch(error => console.log(error));
@@ -140,7 +143,7 @@ class PopupForm extends Component {
                   </div>
                   <div class="buttons-wrapper">
                     <input type="submit" className="submit" />
-                    <button class="close" onClick={this.props.closePopup}>
+                    <button class="close" onClick={this.props.closePopup} id="intelSubmit" >
                       X
                     </button>
                   </div>

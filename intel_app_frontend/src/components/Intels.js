@@ -9,6 +9,8 @@ class Intels extends Component {
     this.state = {
       intels: [],
       user: this.props.user,
+      query: "",
+      filteredIntels: [],
       userTracker: [],
       userInfo: {
         unreadCount: 0
@@ -24,19 +26,40 @@ class Intels extends Component {
     this.getIntels();
   }
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     this.getIntels();
   }
 
-  getIntels() {
+  getIntels = () => {
     fetch("http://localhost:3001/intels")
       .then(response => response.json())
-      .then(json => this.setState({ intels: json }
-        ,()=>{
-          console.log(this.state.intels)
-        }))
+      .then(intels => {
+        const { query } = this.state;
+        const filteredIntels = intels.filter(element => {
+          return element.title.toLowerCase().includes(query.toLowerCase());
+        });
+        this.setState({
+          intels,
+          filteredIntels,
+          isLoading: false
+        });
+      })
       .catch(error => console.error(error));
-  }
+  };
+
+  filterIntel = event => {
+    const query = event.target.value;
+    this.setState(prevState => {
+      const filteredIntels = prevState.intels.filter(element => {
+        return element.title.toLowerCase().includes(query.toLowerCase());
+      });
+
+      return {
+        query,
+        filteredIntels
+      };
+    });
+  };
 
   markRead = (intel, intelID) => {
     let arr = intel.readby;
@@ -77,58 +100,63 @@ class Intels extends Component {
               <span class="words">All Intels</span>
             </div>
             <div class="container">
-              {this.state.intels.map((intel, index) => {
-                
-                  if (
-                    intel.readby.includes(this.state.user.id) ||
-                    intel.user_id === this.state.user.id
-                  ) {
-                    return (
-                      <div
-                        class="readIntel"
-                        onClick={() => this.markRead(intel, intel.id)}
-                      >
-                        <table id="eachIntel">
-                          <tr>
-                            <td rowspan="2" id="date">
-                              {intel.created_at.slice(0, 10)}
-                            </td>
-                            <td id="title">{intel.title}</td>
-                            <td id="readIcon">
-                              <CheckCircleIcon color="primary" />
-                            </td>
-                          </tr>
-                          <tr>
-                            <td id="content">{intel.content}</td>
-                          </tr>
-                        </table>
-                      </div>
-                    );
-                  } else {
-                    return (
-                      <div
-                        class="unreadIntel"
-                        onClick={() => this.markRead(intel, intel.id)}
-                      >
-                        <table id="eachIntel">
-                          <tr>
-                            <td rowspan="2" id="date">
-                              {intel.created_at.slice(0, 10)}
-                            </td>
-                            <td id="title">{intel.title}</td>
-                            <td id="readIcon">
-                              <RadioButtonUncheckedIcon color="primary" />
-                            </td>
-                          </tr>
-                          <tr>
-                            <td id="content">{intel.content}</td>
-                          </tr>
-                        </table>
-                      </div>
-                    );
-                  }
+              <form class="allintels-searchbar">
+                <input
+                  type="text"
+                  placeholder="Search by tags"
+                  onChange={this.filterIntel}
+                />
+              </form>
+              {this.state.filteredIntels.map((intel, index) => {
+                if (
+                  intel.readby.includes(this.state.user.id) ||
+                  intel.user_id === this.state.user.id
+                ) {
+                  return (
+                    <div
+                      class="readIntel"
+                      onClick={() => this.markRead(intel, intel.id)}
+                    >
+                      <table id="eachIntel">
+                        <tr>
+                          <td rowspan="2" id="date">
+                            {intel.created_at.slice(0, 10)}
+                          </td>
+                          <td id="title">{intel.title}</td>
+                          <td id="readIcon">
+                            <CheckCircleIcon color="primary" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td id="content">{intel.content}</td>
+                        </tr>
+                      </table>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div
+                      class="unreadIntel"
+                      onClick={() => this.markRead(intel, intel.id)}
+                    >
+                      <table id="eachIntel">
+                        <tr>
+                          <td rowspan="2" id="date">
+                            {intel.created_at.slice(0, 10)}
+                          </td>
+                          <td id="title">{intel.title}</td>
+                          <td id="readIcon">
+                            <RadioButtonUncheckedIcon color="primary" />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td id="content">{intel.content}</td>
+                        </tr>
+                      </table>
+                    </div>
+                  );
                 }
-              )}
+              })}
             </div>
           </div>
         </div>

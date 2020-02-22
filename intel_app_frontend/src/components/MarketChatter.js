@@ -24,8 +24,9 @@ class MarketChatter extends Component {
   getIntels() {
     fetch("http://localhost:3001/intels")
       .then(response => response.json())
-      .then(json => console.log(json))
+      .then(json => this.setState({ intels: json }))
       .catch(error => console.error(error));
+    console.log(this.state.intels);
   }
 
   togglePopupForm = () => {

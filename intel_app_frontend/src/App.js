@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard";
 import MarketChatter from "./components/MarketChatter.js";
 import DailyNews from "./components/DailyNews.js";
 import Intels from "./components/Intels.js";
+import Landing from "./components/Landing.js"
 
 
 class App extends Component {
@@ -99,6 +100,18 @@ class App extends Component {
               path="/user/:username/dashboard"
               render={props => (
                 <Dashboard
+                  {...props}
+                  handleLogout={this.handleLogout}
+                  loggedInStatus={this.state.isLoggedIn}
+                  user={this.state.user}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/home"
+              render={props => (
+                <Landing
                   {...props}
                   handleLogout={this.handleLogout}
                   loggedInStatus={this.state.isLoggedIn}

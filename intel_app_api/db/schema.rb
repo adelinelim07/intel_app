@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_18_034321) do
+ActiveRecord::Schema.define(version: 2020_02_22_032755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,16 +32,6 @@ ActiveRecord::Schema.define(version: 2020_02_18_034321) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "company_id"
     t.index ["company_id"], name: "index_contacts_on_company_id"
-  end
-
-  create_table "intelcompanies", force: :cascade do |t|
-    t.bigint "intel_id", null: false
-    t.bigint "company_id", null: false
-    t.integer "qty"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_intelcompanies_on_company_id"
-    t.index ["intel_id"], name: "index_intelcompanies_on_intel_id"
   end
 
   create_table "intels", force: :cascade do |t|
@@ -90,8 +80,6 @@ ActiveRecord::Schema.define(version: 2020_02_18_034321) do
   end
 
   add_foreign_key "contacts", "companies"
-  add_foreign_key "intelcompanies", "companies"
-  add_foreign_key "intelcompanies", "intels"
   add_foreign_key "intels", "users"
   add_foreign_key "suggestedintels", "users"
   add_foreign_key "user_trackers", "users"

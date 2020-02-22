@@ -65,10 +65,6 @@ html {
   font-weight: 700;
 }
 
-.words {
-  margin-right: 20px
-}
-
 .container {
   grid-area: box;
   min-width: 100%;
@@ -80,59 +76,4 @@ html {
   overflow-y: scroll;
 }
 
-.allintels-searchbar {
-  padding: 2px;
-  width: 96.5%;
-  margin: 5px 30px 5px 12px;
-}
-
-.allintels-searchbar > input {
-  width: 99%;
-}
-
-.unreadIntel, .readIntel {
-  margin: 10px;
-  border: solid var(--white);
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.unreadIntel {
-  background-color:  rgba(233, 179, 33, 0.2);
-  
-}
-
-.readIntel {
-  background-color:  rgba(78, 206, 174, 0.2);
-}
-
-#eachIntel {
-  table-layout: fixed;
-  width: 100%;
-}
-
-#eachIntel td:nth-child(1) {
-  width: 100px;
-}
-
-#eachIntel td:nth-child(3) {
-  width: 20px;
-}
-
-.unreadIntel #title {
-    font-size: 2vh;
-    font-weight: 800;
-}
-
-.unreadIntel #content {
-    font-size: 1vh
-}
-
-.readIntel #title {
-  font-size: 2vh
-}
-
-.readIntel #content {
-  font-size: 1vh
-}
 
